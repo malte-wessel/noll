@@ -1,0 +1,33 @@
+{
+    "extends": "eslint-config-airbnb",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "comma-dangle": 0,
+        "indent": [1, 4, {"SwitchCase": 1}],
+        "max-len": 0,
+        "valid-jsdoc": 2,
+        "consistent-return": 0,
+        "no-param-reassign": 0,
+        "no-restricted-syntax": 0,
+        "import/no-unresolved": 0,
+        "react/jsx-uses-react": 1,
+        "react/jsx-indent": [1, 4],
+        "react/jsx-indent-props": [1, 4],
+        "react/jsx-no-undef": 2,
+        "react/jsx-space-before-closing": 0,
+        "react/jsx-closing-bracket-location": 0,
+        "react/wrap-multilines": 2,
+        "react/prefer-es6-class": 0,
+    },
+    "plugins": [
+        "react"
+    ]
+}

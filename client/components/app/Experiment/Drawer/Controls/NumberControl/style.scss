@@ -1,0 +1,16 @@
+@import 'style/config.scss';
+
+.head {
+    display: flex;
+    margin-bottom: $size-sm;
+}
+
+.label {
+    flex-grow: 1;
+}
+
+.value {
+    flex-grow: 0;
+    text-align: right;
+    margin-left: $size-base;
+}

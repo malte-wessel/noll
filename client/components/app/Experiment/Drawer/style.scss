@@ -1,0 +1,12 @@
+@import 'style/config.scss';
+
+.container {
+    // background-color: $color-dark-97;
+    border-right: 1px solid $color-black;
+}
+
+.section {
+    padding-top: $size-base;
+    padding-left: $size-base;
+    padding-right: $size-base;
+}

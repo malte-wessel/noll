@@ -1,0 +1,70 @@
+// Sizes
+// -----------------------------------------------------------------------------
+
+$size-base:                         1rem;
+$size-xs:                           0.25rem;
+$size-sm:                           0.5rem;
+$size-lg:                           2rem;
+$size-xlg:                          4rem;
+$size-xxlg:                         6rem;
+
+// Colors
+// -----------------------------------------------------------------------------
+
+$color-white: #fff;
+$color-black: #000;
+
+$color-dark: #1f1f20;
+$color-dark-97: lighten($color-dark, 3%);
+$color-dark-95: lighten($color-dark, 5%);
+$color-dark-90: lighten($color-dark, 10%);
+$color-dark-85: lighten($color-dark, 15%);
+$color-dark-80: lighten($color-dark, 20%);
+$color-dark-75: lighten($color-dark, 25%);
+$color-dark-70: lighten($color-dark, 30%);
+$color-dark-65: lighten($color-dark, 35%);
+$color-dark-60: lighten($color-dark, 40%);
+$color-dark-55: lighten($color-dark, 45%);
+$color-dark-50: lighten($color-dark, 50%);
+$color-dark-45: lighten($color-dark, 55%);
+$color-dark-40: lighten($color-dark, 60%);
+$color-dark-35: lighten($color-dark, 65%);
+$color-dark-30: lighten($color-dark, 70%);
+$color-dark-25: lighten($color-dark, 75%);
+$color-dark-20: lighten($color-dark, 80%);
+$color-dark-15: lighten($color-dark, 85%);
+$color-dark-10: lighten($color-dark, 90%);
+$color-dark-5: lighten($color-dark, 95%);
+
+$color-highlight: #17e6b3;
+$color-highlight-95: darken(#17e6b3, 5%);
+$color-highlight-90: darken(#17e6b3, 10%);
+$color-highlight-85: darken(#17e6b3, 15%);
+
+// Typography
+// -----------------------------------------------------------------------------
+
+$font-color:                        $color-white;
+$font-family-base:                  "Lato", Helevtica, Arial, sans-serif;
+$font-family-heading:               $font-family-base;
+$font-weight-base:                  500;
+$font-weight-bold:                  600;
+$font-weight-black:                 800;
+
+// Font Sizes
+// -----------------------------------------------------------------------------
+
+$font-size-root:                    14px;
+$font-size-xs:                      0.7rem;
+$font-size-sm:                      0.9rem;
+$font-size-base:                    1.0rem;
+$font-size-lg:                      1.3rem;
+$font-size-xlg:                     1.5rem;
+$font-size-xxlg:                    1.7rem;
+$font-size-xxxlg:                   2.1rem;
+
+// Line height
+// -----------------------------------------------------------------------------
+
+$line-height-base:                  1.5;
+$line-height-heading:               1.2;

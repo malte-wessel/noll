@@ -1,0 +1,118 @@
+@import 'style/config.scss';
+
+// Button
+// -----------------------------------------------------------------------------
+
+.button {
+    display: inline-block;
+    margin-bottom: 0;
+
+    border: 0;
+    outline: 0;
+    padding: 0;
+
+    font-family: inherit;
+    white-space: nowrap;
+    vertical-align: middle;
+    line-height: normal;
+    text-decoration: none;
+
+    background-image: none;
+    background-color: transparent;
+
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+.button {
+    height: 3em;
+    padding: 0 1em;
+    line-height: 3em;
+    min-width: 3em;
+
+    border-radius: 2px;
+    border: none;
+
+    font-weight: $font-weight-bold;
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        opacity: 0.5;
+    }
+}
+
+// Firefox: Get rid of the inner focus border
+.button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+.icon + .label {
+    margin-left: $size-sm;
+}
+
+.block {
+    width: 100%;
+    display: block;
+}
+.align-center { text-align: center; }
+.align-left { text-align: left; }
+.align-right { text-align: left; }
+
+// Appearance
+// -----------------------------------------------------------------------------
+
+.appearance-default {
+    color: $color-dark-40;
+    background-color: $color-dark-97;
+
+    &:hover,
+    &:focus {
+        color: $color-white;
+        background-color: $color-dark-95;
+    }
+
+    &.active,
+    &:active {
+        color: $color-white;
+        background-color: $color-dark-90;
+    }
+}
+
+.appearance-invert {
+    color: $color-dark-90;
+    background-color: $color-dark-25;
+
+    &:hover,
+    &:focus {
+        color: $color-dark-95;
+        background-color: $color-dark-20;
+    }
+
+    &.active,
+    &:active {
+        background-color: $color-dark-15;
+    }
+}
+
+.appearance-highlight {
+    color: $color-white;
+    background-color: $color-highlight-95;
+
+    &:hover,
+    &:focus {
+        background-color: $color-highlight;
+    }
+
+    &.active,
+    &:active {
+        background-color: $color-highlight;
+    }
+}

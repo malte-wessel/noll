@@ -1,0 +1,13 @@
+@import 'style/config.scss';
+
+.controls {
+    margin-bottom: $size-base;
+}
+
+.control {
+    color: $color-dark-40;
+}
+
+.control + .control {
+    margin-top: $size-lg;
+}

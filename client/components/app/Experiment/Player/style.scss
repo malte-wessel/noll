@@ -1,0 +1,14 @@
+@import 'style/config.scss';
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-dark;
+}
+
+.canvas {
+    background-color: $color-white;
+}

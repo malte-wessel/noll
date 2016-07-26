@@ -1,0 +1,11 @@
+@import 'style/config.scss';
+
+.group + .group {
+    margin-left: $size-base;
+}
+
+.group {
+    > * + * {
+        margin-left: 1px;
+    }
+}
