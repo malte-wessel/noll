@@ -1,7 +1,7 @@
 {
   "name": "noll",
   "version": "0.1.0",
-  "description": "Canvas editor",
+  "description": "An environment for visual experiments",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack.client.config.js --watch",
