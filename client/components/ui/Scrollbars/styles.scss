@@ -1,0 +1,24 @@
+@import 'style/config.scss';
+
+.trackHorizontal {
+    right: 4px;
+    left: 4px;
+    bottom: 4px;
+    height: 3px;
+}
+
+.trackVertical {
+    top: 4px;
+    right: 4px;
+    bottom: 4px;
+    width: 3px;
+}
+
+.thumbHorizontal,
+.thumbVertical {
+    border-radius: 9999px;
+}
+
+.appearance-default {
+    background-color: $color-dark-90;
+}
