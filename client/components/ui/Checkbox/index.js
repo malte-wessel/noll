@@ -33,23 +33,22 @@ export default createClass({
         /* eslint-enable */
 
         return (
-            <div
-                className={cn(className, styles.container)}
+            <label
+                className={cn(
+                    className,
+                    styles.container
+                )}
                 {...props}>
-                <label className={styles.wrap}>
-                    <div className={styles.columnCheckbox}>
-                        <input
-                            type="checkbox"
-                            onChange={this.handleChange}
-                            checked={!!value}
-                            className={styles.checkbox}/>
-                        <div className={styles.custom}/>
-                    </div>
-                    <div className={styles.columnLabel}>
-                        {label}
-                    </div>
-                </label>
-            </div>
+                <input
+                    type="checkbox"
+                    onChange={this.handleChange}
+                    checked={!!value}
+                    className={styles.checkbox}/>
+                <div className={styles.custom}/>
+                <div className={styles.label}>
+                    {label}
+                </div>
+            </label>
         );
     }
 });
