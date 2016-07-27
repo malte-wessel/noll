@@ -1,80 +1,18 @@
 @import 'style/config.scss';
 
-$slider-knob-size: 0.9rem;
-$slider-inner-knob-size: 0.8rem;
-$slider-bar-height: 2px;
-$slider-side-separation: 1rem;
-$slider-empty-knob-border: .2rem;
-
-$z-index-higher: 30;
-$z-index-high: 20;
-$z-index-normal: 10;
-
 .container {
-    cursor: pointer;
     position: relative;
-    width: calc(100% - #{$slider-knob-size});
-    height: $slider-knob-size;
-    margin-right: $slider-knob-size;
+    width: 100%;
+    height: 10px;
+
+    cursor: pointer;
     user-select: none;
-    &:not(:last-child) {
-        margin-right: $slider-side-separation + $slider-knob-size;
-    }
-    &:not(:first-child) {
-        margin-left: $slider-side-separation;
-    }
-}
 
-.knob {
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: $z-index-higher;
-    display: flex;
-    width: $slider-knob-size;
-    height: $slider-knob-size;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-}
-
-.innerknob {
-    z-index: $z-index-high;
-    width: $slider-inner-knob-size;
-    height: $slider-inner-knob-size;
-    border-radius: 50%;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: .1s;
-    transition-property: height, width, background-color, border;
-    cursor: pointer;
-
-    background-color: $color-white;
+    background-color: $color-dark;
+    border: 1px solid $color-black;
 }
 
 .progress {
-    position: absolute;
-    top: 0;
-    left: $slider-knob-size / 2;
-    width: 100%;
-    height: 100%;
-
-    .innerprogress {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        overflow: hidden;
-        position: absolute;
-        top: calc(#{$slider-knob-size / 2} - #{$slider-bar-height / 2});
-        height: $slider-bar-height;
-        [data-ref="value"] {
-            transition-duration: 0s;
-        }
-        background-color: $color-dark;
-    }
-}
-
-.progressValue {
     position: absolute;
     top: 0;
     right: 0;
@@ -83,23 +21,4 @@ $z-index-normal: 10;
     transform: scaleX(0);
     transform-origin: left center;
     background-color: $color-white;
-}
-
-.root {
-    &.editable {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    &.pressed {
-        .innerknob {
-            width: 100%;
-            height: 100%;
-            transform: translateZ(0);
-        }
-    }
-}
-
-.value {
-    text-align: center;
 }

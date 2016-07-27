@@ -2,56 +2,16 @@ import React, { createClass, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import cn from 'classnames';
 import styles from './styles.scss';
-
-function fitStep(value, step) {
-    const float = value.toString().split('.')[1];
-    const pow = float && float.length || 0;
-    const mult = Math.pow(10, pow);
-    return Math.round(value / step) * (step * mult) / mult;
-}
-
-function round(number, decimals) {
-    if (!isNaN(parseFloat(number)) && isFinite(number)) {
-        const decimalPower = Math.pow(10, decimals);
-        return Math.round(parseFloat(number) * decimalPower) / decimalPower;
-    }
-    return NaN;
-}
-
-function getMousePosition(event) {
-    return {
-        x: event.pageX,
-        y: event.pageY
-    };
-}
-
-function getTouchPosition(event) {
-    return {
-        x: event.touches[0].pageX,
-        y: event.touches[0].pageY
-    };
-}
-
-function pauseEvent(event) {
-    event.stopPropagation();
-    event.preventDefault();
-}
-
-function addEventsToDocument(eventMap) {
-    for (const key in eventMap) {
-        if (!eventMap.hasOwnProperty(key)) continue;
-        document.addEventListener(key, eventMap[key], false);
-    }
-}
-
-function removeEventsFromDocument(eventMap) {
-    for (const key in eventMap) {
-        if (!eventMap.hasOwnProperty(key)) continue;
-        document.removeEventListener(key, eventMap[key], false);
-    }
-}
-
-function noop() {}
+import {
+    fitStep,
+    round,
+    getMousePosition,
+    getTouchPosition,
+    pauseEvent,
+    addEventsToDocument,
+    removeEventsFromDocument,
+    noop
+} from './helpers';
 
 const stringOrNumberType = PropTypes.oneOfType([
     PropTypes.string,
@@ -109,6 +69,9 @@ export default createClass({
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize);
+        removeEventsFromDocument(this.getMouseEventMap());
+        removeEventsFromDocument(this.getTouchEventMap());
+        removeEventsFromDocument(this.getKeyboardEvents());
     },
 
     getKeyboardEvents() {
@@ -155,15 +118,15 @@ export default createClass({
     },
 
     handleResize(event, callback = noop) {
-        const { left, right } = findDOMNode(this.refs.progressbar).getBoundingClientRect();
+        const { left, right } = findDOMNode(this).getBoundingClientRect();
         this.setState({ sliderStart: left, sliderLength: right - left }, callback);
     },
 
-    handleSliderBlur() {
+    handleBlur() {
         removeEventsFromDocument(this.getKeyboardEvents());
     },
 
-    handleSliderFocus() {
+    handleFocus() {
         addEventsToDocument(this.getKeyboardEvents());
     },
 
@@ -190,11 +153,6 @@ export default createClass({
     end(events) {
         removeEventsFromDocument(events);
         this.setState({ pressed: false });
-    },
-
-    knobOffset() {
-        const { max, min } = this.props;
-        return this.state.sliderLength * (this.props.value - min) / (max - min);
     },
 
     move(position) {
@@ -236,61 +194,22 @@ export default createClass({
         return (value - this.props.min) / (this.props.max - this.props.min);
     },
 
-    renderProgess() {
-        const valueStyle = {
-            transform: `scaleX(${this.calculateRatio(this.props.value)})`
-        };
-
-        return (
-            <div className={styles.progress}>
-                <div
-                    ref="progressbar"
-                    className={styles.innerprogress}
-                    max={this.props.max}
-                    min={this.props.min}
-                    value={this.props.value}>
-                    <span
-                        className={styles.progressValue}
-                        style={valueStyle}/>
-                </div>
-            </div>
-        );
-    },
-
     render() {
-        const { editable, showValue } = this.props;
-        const knobStyle = { transform: `translateX(${this.knobOffset()}px)` };
-        const className = cn(styles.root, {
-            [styles.editable]: editable,
-            [styles.pressed]: this.state.pressed
-        }, this.props.className);
-
+        const { value, className } = this.props;
+        const progessStyle = {
+            transform: `scaleX(${this.calculateRatio(value)})`
+        };
         return (
             <div
-                className={className}
-                onBlur={this.handleSliderBlur}
-                onFocus={this.handleSliderFocus}
+                className={cn(styles.container, className)}
+                onBlur={this.handleBlur}
+                onFocus={this.handleFocus}
+                onMouseDown={this.handleMouseDown}
+                onTouchStart={this.handleTouchStart}
                 tabIndex="0">
                 <div
-                    ref="slider"
-                    className={styles.container}
-                    onMouseDown={this.handleMouseDown}
-                    onTouchStart={this.handleTouchStart}>
-                    <div
-                        ref="knob"
-                        className={styles.knob}
-                        onMouseDown={this.handleMouseDown}
-                        onTouchStart={this.handleTouchStart}
-                        style={knobStyle}>
-                        <div className={styles.innerknob}/>
-                    </div>
-                    {this.renderProgess()}
-                </div>
-                {showValue &&
-                    <div className={styles.value}>
-                        {this.props.value}
-                    </div>
-                }
+                    className={styles.progress}
+                    style={progessStyle}/>
             </div>
         );
     }
