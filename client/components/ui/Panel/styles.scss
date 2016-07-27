@@ -1,0 +1,30 @@
+@import 'style/config.scss';
+
+.container {
+    overflow: hidden;
+    padding: $size-base;
+    background-color: $color-dark-95;
+    border-top: 1px solid $color-black;
+    box-shadow: inset 0px 1px 0px $color-dark-90;
+}
+
+.title {
+    margin-bottom: $size-base;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+}
+
+.scrollable {
+    display: flex;
+    flex-direction: column;
+    .title {
+        flex-grow: 0;
+    }
+    .scrollbars {
+        flex-grow: 1;
+        margin: -$size-base;
+    }
+    .body {
+        padding: $size-base;
+    }
+}

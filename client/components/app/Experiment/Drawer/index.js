@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import React, { PropTypes } from 'react';
 
+import Panel from 'components/ui/Panel';
 import Button from 'components/ui/Button';
 import Scrollbars from 'components/ui/Scrollbars';
 
@@ -13,14 +14,16 @@ const Drawer = props => {
     const { title } = config;
     return (
         <div className={cn(styles.container, className)}>
-            <Scrollbars>
-                <div className={styles.section}>
-                    <Button to="/" icon="chevron-left" align="left" block>{title}</Button>
-                </div>
-                <div className={styles.section}>
-                    <Controls id={id}/>
-                </div>
-            </Scrollbars>
+            <Panel className={styles.panelMain}>
+                <Button to="/" icon="bars" align="left" block>{title}</Button>
+            </Panel>
+            <Panel
+                 className={styles.panelControls}
+                title="Controls"
+                icon="sliders"
+                scrollable>
+                <Controls id={id}/>
+            </Panel>
         </div>
     );
 };

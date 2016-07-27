@@ -1,8 +1,8 @@
 @import 'style/config.scss';
 
-$slider-knob-size: 1rem;
-$slider-inner-knob-size: 0.9rem;
-$slider-bar-height: 3px;
+$slider-knob-size: 0.9rem;
+$slider-inner-knob-size: 0.8rem;
+$slider-bar-height: 2px;
 $slider-side-separation: 1rem;
 $slider-empty-knob-border: .2rem;
 
@@ -70,7 +70,7 @@ $z-index-normal: 10;
         [data-ref="value"] {
             transition-duration: 0s;
         }
-        background-color: $color-dark-85;
+        background-color: $color-dark;
     }
 }
 

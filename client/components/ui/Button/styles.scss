@@ -37,14 +37,14 @@
     min-width: 3em;
 
     border-radius: 2px;
-    border: none;
+    border: 1px solid $color-black;
 
     font-weight: $font-weight-bold;
 
     &.disabled,
     &[disabled],
     fieldset[disabled] & {
-        opacity: 0.5;
+        opacity: 0.4;
     }
 }
 
@@ -70,26 +70,28 @@
 // -----------------------------------------------------------------------------
 
 .appearance-default {
-    color: $color-dark-40;
-    background-color: $color-dark-97;
-
     &:hover,
     &:focus {
         color: $color-white;
-        background-color: $color-dark-95;
+        background-color: $color-dark-90;
+        box-shadow: inset 0px 1px 0px $color-dark-85;
     }
 
     &.active,
     &:active {
         color: $color-white;
-        background-color: $color-dark-90;
+        background-color: $color-dark-85;
+        box-shadow: inset 0px 1px 0px $color-dark-90;
+    }
+
+    &, &[disabled] {
+        color: $color-dark-40;
+        background-color: $color-dark-95;
+        box-shadow: inset 0px 1px 0px $color-dark-90;
     }
 }
 
 .appearance-invert {
-    color: $color-dark-90;
-    background-color: $color-dark-25;
-
     &:hover,
     &:focus {
         color: $color-dark-95;
@@ -98,21 +100,14 @@
 
     &.active,
     &:active {
+        color: $color-dark-95;
         background-color: $color-dark-15;
-    }
-}
-
-.appearance-highlight {
-    color: $color-white;
-    background-color: $color-highlight-95;
-
-    &:hover,
-    &:focus {
-        background-color: $color-highlight;
+        box-shadow: inset 0px 1px 0px $color-dark-30;
     }
 
-    &.active,
-    &:active {
-        background-color: $color-highlight;
+    &, &[disabled] {
+        color: $color-dark-90;
+        background-color: $color-dark-25;
+        box-shadow: inset 0px 1px 0px $color-white;
     }
 }

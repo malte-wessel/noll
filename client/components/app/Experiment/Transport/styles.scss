@@ -1,6 +1,10 @@
 @import 'style/config.scss';
 
 .container {
+    padding: $size-sm;
+}
+
+.body {
     display: flex;
     justify-content: center;
 }

@@ -10,7 +10,7 @@ export default createClass({
     displayName: 'Button',
 
     propTypes: {
-        appearance: PropTypes.oneOf(['default', 'invert', 'highlight']),
+        appearance: PropTypes.oneOf(['default', 'invert']),
         icon: PropTypes.string,
         to: PropTypes.string,
         block: PropTypes.bool,

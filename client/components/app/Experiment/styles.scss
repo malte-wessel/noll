@@ -14,12 +14,22 @@
 
 .main {
     flex-grow: 1;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.stage {
+    flex-grow: 1;
+}
+
+.transport {
+    flex-grow: 0;
 }
 
 .drawer {
     flex-grow: 0;
     flex-basis: 300px;
+    background-color: $color-dark-95;
     border-left: 1px solid $color-black;
 }
 
@@ -29,12 +39,4 @@
     right: 0;
     bottom: 0;
     top: 0;
-}
-
-.controls {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: $size-base;
 }

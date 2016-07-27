@@ -1,7 +1,16 @@
 @import 'style/config.scss';
 
-.section {
-    padding-top: $size-base;
-    padding-left: $size-base;
-    padding-right: $size-base;
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.panelMain {
+    flex-grow: 0;
+}
+
+.panelControls {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }

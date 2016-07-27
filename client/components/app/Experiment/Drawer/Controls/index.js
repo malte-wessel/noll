@@ -32,12 +32,14 @@ const Controls = props => {
                             className={styles.control}/>);
                 })}
             </div>
-            <Button
-                onClick={resetValues}
-                icon="times"
-                block>
-                Use defaults
-            </Button>
+            <div className={styles.actions}>
+                <Button
+                    onClick={resetValues}
+                    icon="times"
+                    block>
+                    Use defaults
+                </Button>
+            </div>
         </div>
     );
 };

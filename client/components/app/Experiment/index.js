@@ -14,10 +14,10 @@ const Experiment = props => {
     return (
         <div className={styles.container}>
             <div className={styles.main}>
-                <Scrollbars>
+                <Scrollbars className={styles.stage}>
                     <Player id={id} className={styles.player}/>
                 </Scrollbars>
-                <Transport id={id} className={styles.controls}/>
+                <Transport id={id} className={styles.transport}/>
             </div>
             <Drawer id={id} className={styles.drawer}/>
         </div>

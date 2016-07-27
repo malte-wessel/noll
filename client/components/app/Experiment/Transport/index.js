@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import React, { PropTypes } from 'react';
+import Panel from 'components/ui/Panel';
 import Button from 'components/ui/Button';
 import ButtonGroup from 'components/ui/ButtonGroup';
 import enhance from './enhance';
@@ -19,7 +20,10 @@ const Transport = props => {
     } = props;
 
     return (
-        <div className={cn(styles.container, className)} {...rest}>
+        <Panel
+            className={cn(styles.container, className)}
+            bodyClassName={styles.body}
+            {...rest}>
             <ButtonGroup>
                 <Button
                     icon="fast-backward"
@@ -27,7 +31,8 @@ const Transport = props => {
                 <Button
                     appearance="invert"
                     icon={playing ? 'pause' : 'play'}
-                    onClick={playing ? pause : play}/>
+                    onClick={playing ? pause : play}
+                    active={playing}/>
                 <Button
                     icon="step-forward"
                     disabled={playing}
@@ -39,7 +44,7 @@ const Transport = props => {
                     onClick={toggleRepeat}
                     active={repeat}/>
             </ButtonGroup>
-        </div>
+        </Panel>
     );
 };
 
