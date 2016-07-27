@@ -25,7 +25,7 @@ const Choose = props => {
                             to={`/${id}`}
                             align="left"
                             block>
-                                {title}
+                            {title}
                         </Button>
                     );
                 })}

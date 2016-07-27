@@ -20,7 +20,6 @@ function rect(ctx, p, width = 1, height = 1, color = 'black') {
     ctx.fillRect(p[0], p[1], width, height);
 }
 
-
 function drawTree(ctx, node, maxDepth) {
     const position = node.getPosition();
     const children = node.getChildren();

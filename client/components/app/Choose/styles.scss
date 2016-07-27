@@ -18,37 +18,3 @@
     width: 300px;
     border: 1px solid $color-black;
 }
-
-.item {
-    display: flex;
-    background-color: $color-dark-97;
-    color: $color-dark-40;
-    text-decoration: none;
-    font-weight: $font-weight-bold;
-    border-radius: 2px;
-
-    &:hover,
-    &:focus {
-        color: $color-white;
-        background-color: $color-dark-95;
-    }
-
-    &:active {
-        background-color: $color-dark-90;
-    }
-
-    padding: $size-base;
-}
-
-.item + .item {
-    margin-top: 1px;
-}
-
-.icon {
-    flex-grow: 0;
-}
-
-.label {
-    margin-left: $size-base;
-    flex-grow: 1;
-}
