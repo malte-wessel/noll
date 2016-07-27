@@ -4,6 +4,7 @@
 // -----------------------------------------------------------------------------
 
 .button {
+    overflow: hidden;
     display: inline-block;
     margin-bottom: 0;
 
@@ -62,9 +63,14 @@
     width: 100%;
     display: block;
 }
+
 .align-center { text-align: center; }
 .align-left { text-align: left; }
 .align-right { text-align: left; }
+
+.square {
+    width: 3em;
+}
 
 // Appearance
 // -----------------------------------------------------------------------------
@@ -80,8 +86,8 @@
     &.active,
     &:active {
         color: $color-white;
-        background-color: $color-dark-85;
-        box-shadow: inset 0px 1px 0px $color-dark-90;
+        background-color: $color-dark;
+        box-shadow: inset 0px 1px 0px rgba($color-black, 0.2);
     }
 
     &, &[disabled] {
@@ -101,7 +107,7 @@
     &.active,
     &:active {
         color: $color-dark-95;
-        background-color: $color-dark-15;
+        background-color: $color-dark-25;
         box-shadow: inset 0px 1px 0px $color-dark-30;
     }
 

@@ -56,6 +56,7 @@ export default createClass({
             styles[`align-${align}`],
             block && styles.block,
             active && styles.active,
+            icon && !children && styles.square,
             className
         );
 
