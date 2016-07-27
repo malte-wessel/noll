@@ -1,20 +1,20 @@
 import cn from 'classnames';
 import React, { PropTypes } from 'react';
 import Slider from 'components/ui/Slider';
-import style from './style.scss';
+import styles from './styles.scss';
 
 const NumberControl = props => {
     const { control, value, onChange, className } = props;
     const { label, min, max, step } = control;
     return (
-        <div className={cn(style.control, className)}>
-            <div className={style.head}>
-                <div className={style.label}>{label}</div>
-                <div className={style.value}>{value}</div>
+        <div className={cn(styles.control, className)}>
+            <div className={styles.head}>
+                <div className={styles.label}>{label}</div>
+                <div className={styles.value}>{value}</div>
             </div>
             <Slider
                 showValue={false}
-                className={style.input}
+                className={styles.input}
                 key="input"
                 value={value}
                 onChange={onChange}

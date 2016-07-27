@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import React, { PropTypes, createClass } from 'react';
 
-import style from './style.scss';
+import styles from './styles.scss';
 
 export default createClass({
 
@@ -34,18 +34,18 @@ export default createClass({
 
         return (
             <div
-                className={cn(className, style.container)}
+                className={cn(className, styles.container)}
                 {...props}>
-                <label className={style.wrap}>
-                    <div className={style.columnCheckbox}>
+                <label className={styles.wrap}>
+                    <div className={styles.columnCheckbox}>
                         <input
                             type="checkbox"
                             onChange={this.handleChange}
                             checked={!!value}
-                            className={style.checkbox}/>
-                        <div className={style.custom}/>
+                            className={styles.checkbox}/>
+                        <div className={styles.custom}/>
                     </div>
-                    <div className={style.columnLabel}>
+                    <div className={styles.columnLabel}>
                         {label}
                     </div>
                 </label>

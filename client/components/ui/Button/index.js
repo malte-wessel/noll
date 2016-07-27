@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Link } from 'react-router';
 
 import Icon from 'components/ui/Icon';
-import style from './style.scss';
+import styles from './styles.scss';
 
 export default createClass({
 
@@ -30,8 +30,8 @@ export default createClass({
     renderInner() {
         const { icon, children } = this.props;
         return [
-            icon && <Icon icon={icon} className={style.icon} key="icon"/>,
-            children && <span className={style.label} key="label">{children}</span>
+            icon && <Icon icon={icon} className={styles.icon} key="icon"/>,
+            children && <span className={styles.label} key="label">{children}</span>
         ];
     },
 
@@ -51,11 +51,11 @@ export default createClass({
         /* eslint-enable */
 
         const finalClassName = cn(
-            style.button,
-            style[`appearance-${appearance}`],
-            style[`align-${align}`],
-            block && style.block,
-            active && style.active,
+            styles.button,
+            styles[`appearance-${appearance}`],
+            styles[`align-${align}`],
+            block && styles.block,
+            active && styles.active,
             className
         );
 

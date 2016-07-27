@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import Button from 'components/ui/Button';
 import ButtonGroup from 'components/ui/ButtonGroup';
 import enhance from './enhance';
-import style from './style.scss';
+import styles from './styles.scss';
 
 const Transport = props => {
     const {
@@ -19,7 +19,7 @@ const Transport = props => {
     } = props;
 
     return (
-        <div className={cn(style.container, className)} {...rest}>
+        <div className={cn(styles.container, className)} {...rest}>
             <ButtonGroup>
                 <Button
                     icon="fast-backward"

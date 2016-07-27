@@ -6,7 +6,7 @@ import NumberControl from './NumberControl';
 import BooleanControl from './BooleanControl';
 
 import enhance from './enhance';
-import style from './style.scss';
+import styles from './styles.scss';
 
 const ControlByType = {
     number: NumberControl,
@@ -18,8 +18,8 @@ const Controls = props => {
     const { setValue, resetValues } = actions;
 
     return (
-        <div className={cn(style.container, className)}>
-            <div className={style.controls}>
+        <div className={cn(styles.container, className)}>
+            <div className={styles.controls}>
                 {controls.map(control => {
                     const { key, type } = control;
                     const Control = ControlByType[type.toLowerCase()];
@@ -29,7 +29,7 @@ const Controls = props => {
                             control={control}
                             value={values[key]}
                             onChange={value => setValue(key, value)}
-                            className={style.control}/>);
+                            className={styles.control}/>);
                 })}
             </div>
             <Button

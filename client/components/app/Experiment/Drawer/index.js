@@ -6,18 +6,18 @@ import Scrollbars from 'components/ui/Scrollbars';
 
 import Controls from './Controls';
 import enhance from './enhance';
-import style from './style.scss';
+import styles from './styles.scss';
 
 const Drawer = props => {
     const { id, config, className } = props;
     const { title } = config;
     return (
-        <div className={cn(style.container, className)}>
+        <div className={cn(styles.container, className)}>
             <Scrollbars>
-                <div className={style.section}>
+                <div className={styles.section}>
                     <Button to="/" icon="chevron-left" align="left" block>{title}</Button>
                 </div>
-                <div className={style.section}>
+                <div className={styles.section}>
                     <Controls id={id}/>
                 </div>
             </Scrollbars>

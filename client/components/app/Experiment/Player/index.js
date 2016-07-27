@@ -3,7 +3,7 @@ import React, { createClass, PropTypes } from 'react';
 import raf, { cancel as caf } from 'raf';
 import RedBox from 'redbox-react';
 
-import style from './style.scss';
+import styles from './styles.scss';
 import enhance from './enhance';
 
 const Player = createClass({
@@ -167,9 +167,9 @@ const Player = createClass({
         const { error } = this.state;
 
         return (
-            <div className={cn(style.container, className)} {...props}>
+            <div className={cn(styles.container, className)} {...props}>
                 <canvas
-                    className={style.canvas}
+                    className={styles.canvas}
                     ref="canvas"
                     width={width}
                     height={height}/>

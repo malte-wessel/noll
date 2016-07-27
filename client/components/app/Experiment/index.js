@@ -5,21 +5,21 @@ import Transport from './Transport';
 import Drawer from './Drawer';
 
 import enhance from './enhance';
-import style from './style.scss';
+import styles from './styles.scss';
 
 const Experiment = props => {
     const { id, exists } = props;
     if (!exists) return false;
 
     return (
-        <div className={style.container}>
-            <Drawer id={id} className={style.drawer}/>
-            <div className={style.main}>
+        <div className={styles.container}>
+            <div className={styles.main}>
                 <Scrollbars>
-                    <Player id={id} className={style.player}/>
+                    <Player id={id} className={styles.player}/>
                 </Scrollbars>
-                <Transport id={id} className={style.controls}/>
+                <Transport id={id} className={styles.controls}/>
             </div>
+            <Drawer id={id} className={styles.drawer}/>
         </div>
     );
 };

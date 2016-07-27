@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
-import style from './style.scss';
+import styles from './styles.scss';
 
 const App = props => {
     const { children } = props;
     return (
-        <div className={style.container}>
+        <div className={styles.container}>
             {children}
         </div>
     );

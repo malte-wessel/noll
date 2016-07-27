@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import cn from 'classnames';
-import style from './style.scss';
+import styles from './styles.scss';
 
 const Icon = props => {
     const { icon, className, padded, ...rest } = props;
     return (
-        <i {...rest} className={cn('fa', `fa-${icon}`, padded && style.padded, className)}/>
+        <i {...rest} className={cn('fa', `fa-${icon}`, padded && styles.padded, className)}/>
     );
 };
 
