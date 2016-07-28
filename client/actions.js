@@ -54,9 +54,27 @@ export function resetValues() {
     };
 }
 
-export function setZoom(zoom) {
+export function zoomIn() {
     return {
-        type: 'SET_ZOOM',
-        payload: zoom
+        type: 'ZOOM_IN'
+    };
+}
+
+export function zoomOut() {
+    return {
+        type: 'ZOOM_OUT'
+    };
+}
+
+export function zoomReset() {
+    return {
+        type: 'ZOOM_RESET'
+    };
+}
+
+export function setStageSize({ width, height }) {
+    return {
+        type: 'SET_STAGE_SIZE',
+        payload: { width, height }
     };
 }

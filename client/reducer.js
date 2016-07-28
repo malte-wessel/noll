@@ -1,3 +1,5 @@
+import zoomSteps from 'utils/zoomSteps';
+
 const initialState = {
     experimentsById: {},
     playing: false,
@@ -7,8 +9,10 @@ const initialState = {
     reset: 0,
     values: {},
     zoom: 'auto',
-    playerWidth: undefined,
-    playerHeight: undefined
+    canZoomIn: true,
+    canZoomOut: true,
+    stageWidth: undefined,
+    stageHeight: undefined
 };
 
 export default function (state = initialState, action) {
@@ -74,10 +78,43 @@ export default function (state = initialState, action) {
                 values: {}
             };
         }
-        case 'SET_ZOOM': {
+        case 'ZOOM_IN': {
+            const idx = zoomSteps.indexOf(state.zoom);
+            const zoom = state.zoom === 'auto' ? 100 : zoomSteps[idx + 1];
+            const canZoomIn = zoomSteps.indexOf(zoom) < zoomSteps.length - 1;
+            const canZoomOut = true;
             return {
                 ...state,
-                zoom: action.payload
+                zoom,
+                canZoomIn,
+                canZoomOut
+            };
+        }
+        case 'ZOOM_OUT': {
+            const idx = zoomSteps.indexOf(state.zoom);
+            const zoom = state.zoom === 'auto' ? 100 : zoomSteps[idx - 1];
+            const canZoomIn = true;
+            const canZoomOut = zoomSteps.indexOf(zoom) > 0;
+            return {
+                ...state,
+                zoom,
+                canZoomIn,
+                canZoomOut
+            };
+        }
+        case 'ZOOM_RESET': {
+            return {
+                ...state,
+                zoom: state.zoom === 'auto' ? 100 : 'auto',
+                canZoomIn: true,
+                canZoomOut: true
+            };
+        }
+        case 'SET_STAGE_SIZE': {
+            return {
+                ...state,
+                stageWidth: action.payload.width,
+                stageHeight: action.payload.height
             };
         }
         default: {

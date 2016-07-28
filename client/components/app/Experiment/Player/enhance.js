@@ -13,6 +13,8 @@ const mapStateToProps = createSelector(
     state => state.reset,
     state => state.values,
     state => state.zoom,
+    state => state.stageWidth,
+    state => state.stageHeight,
     (state, props) => {
         const experiment = getExperiment(state, props);
         return experiment && experiment.config;
@@ -25,7 +27,7 @@ const mapStateToProps = createSelector(
         const experiment = getExperiment(state, props);
         return experiment && experiment.update;
     },
-    (playing, finished, repeat, step, reset, values, zoom, config, initialize, update) => {
+    (playing, finished, repeat, step, reset, values, zoom, stageWidth, stageHeight, config, initialize, update) => {
         const { controls } = config;
         return {
             playing,
@@ -35,6 +37,8 @@ const mapStateToProps = createSelector(
             reset,
             values: getValues(controls, values),
             zoom,
+            stageWidth,
+            stageHeight,
             config,
             initialize,
             update

@@ -20,6 +20,8 @@ const Player = createClass({
         step: PropTypes.number.isRequired,
         reset: PropTypes.number.isRequired,
         values: PropTypes.object.isRequired,
+        stageWidth: PropTypes.number,
+        stageHeight: PropTypes.number,
         zoom: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number
@@ -34,8 +36,6 @@ const Player = createClass({
     getInitialState() {
         return {
             error: undefined,
-            offsetWidth: undefined,
-            offsetHeight: undefined
         };
     },
 
@@ -84,9 +84,11 @@ const Player = createClass({
     },
 
     setDimensions() {
+        const { actions } = this.props;
+        const { setStageSize } = actions;
         const $player = findDOMNode(this);
-        const { offsetWidth, offsetHeight } = $player;
-        this.setState({ offsetWidth, offsetHeight });
+        const { offsetWidth: width, offsetHeight: height } = $player;
+        setStageSize({ width, height });
     },
 
     play() {
@@ -177,6 +179,8 @@ const Player = createClass({
             reset,
             values,
             zoom,
+            stageWidth,
+            stageHeight,
             initialize,
             update,
             config,
@@ -186,26 +190,35 @@ const Player = createClass({
         } = this.props;
         /* eslint-enable*/
 
-        const { error, offsetWidth, offsetHeight } = this.state;
+        const { error } = this.state;
         const {
-            width = offsetWidth,
-            height = offsetHeight
+            width = stageWidth || 0,
+            height = stageHeight || 0
         } = config;
 
         let finalWidth = width;
         let finalHeight = height;
 
         if (zoom === 'auto') {
-            finalWidth = offsetHeight * (width / height);
-            finalHeight = offsetHeight;
-            if (finalWidth > offsetWidth) {
-                finalWidth = offsetWidth;
-                finalHeight = offsetWidth * (height / width);
+            finalWidth = stageHeight * (width / height);
+            finalHeight = stageHeight;
+            if (finalWidth > stageWidth) {
+                finalWidth = stageWidth;
+                finalHeight = stageWidth * (height / width);
             }
         } else {
             finalWidth = width * (zoom / 100);
             finalHeight = height * (zoom / 100);
         }
+
+        const canvasStyle = !isNaN(finalWidth) && !isNaN(finalHeight)
+            ? {
+                position: 'relative',
+                left: stageWidth > finalWidth ? (stageWidth - finalWidth) / 2 : 0,
+                top: stageHeight > finalHeight ? (stageHeight - finalHeight) / 2 : 0,
+                width: finalWidth,
+                height: finalHeight
+            } : {};
 
         return (
             <div
@@ -217,13 +230,7 @@ const Player = createClass({
                         ref="canvas"
                         width={width}
                         height={height}
-                        style={{
-                            position: 'relative',
-                            left: offsetWidth > finalWidth ? (offsetWidth - finalWidth) / 2 : 0,
-                            top: offsetHeight > finalHeight ? (offsetHeight - finalHeight) / 2 : 0,
-                            width: finalWidth,
-                            height: finalHeight
-                        }}/>
+                        style={canvasStyle}/>
                     {error &&
                         <RedBox
                             error={error}/>

@@ -4,9 +4,13 @@ import { Scrollbars as BaseScrollbars } from 'react-custom-scrollbars';
 import styles from './styles.scss';
 
 const Scrollbars = createClass({
+
+    displayName: 'Scrollbars',
+
     propTypes: {
         appearance: PropTypes.oneOf(['default'])
     },
+
     getDefaultProps() {
         return {
             appearance: 'default'
