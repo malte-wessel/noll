@@ -28,7 +28,6 @@
     "react-prefixr": "^0.1.0",
     "react-redux": "^4.4.0",
     "react-router": "^2.6.0",
-    "react-router-redux": "^4.0.5",
     "redbox-react": "^1.2.10",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",

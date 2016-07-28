@@ -7,9 +7,9 @@ const mapStateToProps = createSelector(
         const { id } = params;
         return id;
     },
-    state => state.experiments.byId,
-    (id, byId) => ({
-        id, exists: !!byId[id]
+    state => state.experimentsById,
+    (id, experimentsById) => ({
+        id, exists: !!experimentsById[id]
     })
 );
 

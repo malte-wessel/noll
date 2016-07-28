@@ -1,18 +1,18 @@
 import { bindActionCreators } from 'redux';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
-import * as actions from 'actions/experiments';
+import * as actions from 'actions';
 import getExperiment from 'utils/getExperiment';
 import getValues from 'utils/getValues';
 
 const mapStateToProps = createSelector(
-    state => state.experiments.playing,
-    state => state.experiments.finished,
-    state => state.experiments.repeat,
-    state => state.experiments.step,
-    state => state.experiments.reset,
-    state => state.experiments.values,
-    state => state.experiments.zoom,
+    state => state.playing,
+    state => state.finished,
+    state => state.repeat,
+    state => state.step,
+    state => state.reset,
+    state => state.values,
+    state => state.zoom,
     (state, props) => {
         const experiment = getExperiment(state, props);
         return experiment && experiment.config;

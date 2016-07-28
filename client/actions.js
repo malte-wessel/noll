@@ -1,62 +1,62 @@
-export function set(experimentsById) {
+export function setExperiments(experimentsById) {
     return {
-        type: 'EXPERIMENTS_SET',
+        type: 'SET_EXPERIMENTS',
         payload: experimentsById
     };
 }
 
 export function play() {
     return {
-        type: 'EXPERIMENTS_PLAY'
+        type: 'PLAY'
     };
 }
 
 export function pause() {
     return {
-        type: 'EXPERIMENTS_PAUSE'
+        type: 'PAUSE'
     };
 }
 
 export function step() {
     return {
-        type: 'EXPERIMENTS_STEP'
+        type: 'STEP'
     };
 }
 
 export function finish() {
     return {
-        type: 'EXPERIMENTS_FINISH'
+        type: 'FINISH'
     };
 }
 
 export function reset() {
     return {
-        type: 'EXPERIMENTS_RESET'
+        type: 'RESET'
     };
 }
 
 export function toggleRepeat() {
     return {
-        type: 'EXPERIMENTS_TOGGLE_REPEAT'
+        type: 'TOGGLE_REPEAT'
     };
 }
 
 export function setValue(key, value) {
     return {
-        type: 'EXPERIMENTS_SET_VALUE',
+        type: 'SET_VALUE',
         payload: { key, value }
     };
 }
 
 export function resetValues() {
     return {
-        type: 'EXPERIMENTS_RESET_VALUES'
+        type: 'RESET_VALUES'
     };
 }
 
 export function setZoom(zoom) {
     return {
-        type: 'EXPERIMENTS_SET_ZOOM',
+        type: 'SET_ZOOM',
         payload: zoom
     };
 }

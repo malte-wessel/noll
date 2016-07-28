@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from 'actions/experiments';
+import * as actions from 'actions';
 import getExperiment from 'utils/getExperiment';
 import getValues from 'utils/getValues';
 
@@ -10,7 +10,7 @@ const mapStateToProps = createSelector(
         const experiment = getExperiment(state, props);
         return experiment && experiment.config && experiment.config.controls;
     },
-    state => state.experiments.values,
+    state => state.values,
     (controls, values) => ({
         controls,
         values: getValues(controls, values)

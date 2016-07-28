@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 
 const getExperiment = (state, props) => {
     const { id } = props;
-    const { experiments } = state;
-    const { byId } = experiments;
-    return byId[id];
+    const { experimentsById } = state;
+    return experimentsById[id];
 };
 
 const mapStateToProps = createSelector(
