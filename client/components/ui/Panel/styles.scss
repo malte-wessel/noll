@@ -24,6 +24,12 @@
         flex-grow: 1;
         margin: -$size-base;
     }
+    .title + .scrollbars {
+        margin-top: 0;
+        .body {
+            padding-top: 0;
+        }
+    }
     .body {
         padding: $size-base;
     }
