@@ -6,6 +6,7 @@ const initialState = {
     step: 0,
     reset: 0,
     values: {},
+    zoom: 'auto'
 };
 
 export default function (state = initialState, action) {
@@ -69,6 +70,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 values: {}
+            };
+        }
+        case 'EXPERIMENTS_SET_ZOOM': {
+            return {
+                ...state,
+                zoom: action.payload
             };
         }
         default: {

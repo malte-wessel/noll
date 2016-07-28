@@ -1,8 +1,10 @@
 import cn from 'classnames';
 import React, { createClass, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 import raf, { cancel as caf } from 'raf';
 import RedBox from 'redbox-react';
 
+import Scrollbars from 'components/ui/Scrollbars';
 import styles from './styles.scss';
 import enhance from './enhance';
 
@@ -18,6 +20,10 @@ const Player = createClass({
         step: PropTypes.number.isRequired,
         reset: PropTypes.number.isRequired,
         values: PropTypes.object.isRequired,
+        zoom: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]).isRequired,
         initialize: PropTypes.func.isRequired,
         update: PropTypes.func.isRequired,
         config: PropTypes.object.isRequired,
@@ -27,12 +33,16 @@ const Player = createClass({
 
     getInitialState() {
         return {
-            error: undefined
+            error: undefined,
+            offsetWidth: undefined,
+            offsetHeight: undefined
         };
     },
 
     componentDidMount() {
         this.reset();
+        this.setDimensions();
+        window.addEventListener('resize', this.handleWindowResize);
     },
 
     componentWillReceiveProps(propsNext) {
@@ -70,6 +80,13 @@ const Player = createClass({
 
     componentWillUnmount() {
         this.pause();
+        window.removeEventListener('resize', this.handleWindowResize);
+    },
+
+    setDimensions() {
+        const $player = findDOMNode(this);
+        const { offsetWidth, offsetHeight } = $player;
+        this.setState({ offsetWidth, offsetHeight });
     },
 
     play() {
@@ -127,6 +144,10 @@ const Player = createClass({
         });
     },
 
+    handleWindowResize() {
+        this.setDimensions();
+    },
+
     handleClickPlay() {
         const { actions } = this.props;
         const { play } = actions;
@@ -152,8 +173,10 @@ const Player = createClass({
             playing,
             finished,
             repeat,
+            step,
             reset,
             values,
+            zoom,
             initialize,
             update,
             config,
@@ -163,20 +186,49 @@ const Player = createClass({
         } = this.props;
         /* eslint-enable*/
 
-        const { width, height } = config;
-        const { error } = this.state;
+        const { error, offsetWidth, offsetHeight } = this.state;
+        const {
+            width = offsetWidth,
+            height = offsetHeight
+        } = config;
+
+        let finalWidth = width;
+        let finalHeight = height;
+
+        if (zoom === 'auto') {
+            finalWidth = offsetHeight * (width / height);
+            finalHeight = offsetHeight;
+            if (finalWidth > offsetWidth) {
+                finalWidth = offsetWidth;
+                finalHeight = offsetWidth * (height / width);
+            }
+        } else {
+            finalWidth = width * (zoom / 100);
+            finalHeight = height * (zoom / 100);
+        }
 
         return (
-            <div className={cn(styles.container, className)} {...props}>
-                <canvas
-                    className={styles.canvas}
-                    ref="canvas"
-                    width={width}
-                    height={height}/>
-                {error &&
-                    <RedBox
-                        error={error}/>
-                }
+            <div
+                className={cn(styles.container, className)}
+                {...props}>
+                <Scrollbars>
+                    <canvas
+                        className={styles.canvas}
+                        ref="canvas"
+                        width={width}
+                        height={height}
+                        style={{
+                            position: 'relative',
+                            left: offsetWidth > finalWidth ? (offsetWidth - finalWidth) / 2 : 0,
+                            top: offsetHeight > finalHeight ? (offsetHeight - finalHeight) / 2 : 0,
+                            width: finalWidth,
+                            height: finalHeight
+                        }}/>
+                    {error &&
+                        <RedBox
+                            error={error}/>
+                    }
+                </Scrollbars>
             </div>
         );
     }

@@ -32,12 +32,12 @@
 }
 
 .button {
-    height: 3em;
-    padding: 0 1em;
-    line-height: 3em;
-    min-width: 3em;
+    height: $input-height;
+    line-height: $input-height;
+    min-width: $input-height;
+    padding: 0 $input-padding;
 
-    border-radius: 2px;
+    border-radius: $input-radius;
     border: 1px solid $color-black;
 
     font-weight: $font-weight-bold;
@@ -69,7 +69,7 @@
 .align-right { text-align: left; }
 
 .square {
-    width: 3em;
+    width: $input-height;
 }
 
 // Appearance

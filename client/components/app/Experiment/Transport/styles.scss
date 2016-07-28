@@ -6,5 +6,41 @@
 
 .body {
     display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    flex-basis: 30%;
+    flex-shrink: 1;
+
+    display: flex;
+    overflow: hidden;
+    justify-content: flex-start;
+
+    text-align: left;
+    white-space: nowrap;
+}
+
+.center {
+    flex-shrink: 0;
+
+    display: flex;
+    overflow: hidden;
     justify-content: center;
+
+    text-align: center;
+    white-space: nowrap;
+    margin: 0 $size-base;
+}
+
+.right {
+    flex-basis: 30%;
+    flex-shrink: 1;
+
+    display: flex;
+    overflow: hidden;
+    justify-content: flex-end;
+
+    text-align: right;
+    white-space: nowrap;
 }

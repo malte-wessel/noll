@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import Scrollbars from 'components/ui/Scrollbars';
 import Player from './Player';
 import Transport from './Transport';
 import Drawer from './Drawer';
@@ -14,9 +13,9 @@ const Experiment = props => {
     return (
         <div className={styles.container}>
             <div className={styles.main}>
-                <Scrollbars className={styles.stage}>
+                <div className={styles.stage}>
                     <Player id={id} className={styles.player}/>
-                </Scrollbars>
+                </div>
                 <Transport id={id} className={styles.transport}/>
             </div>
             <Drawer id={id} className={styles.drawer}/>

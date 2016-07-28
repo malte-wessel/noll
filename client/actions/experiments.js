@@ -53,3 +53,10 @@ export function resetValues() {
         type: 'EXPERIMENTS_RESET_VALUES'
     };
 }
+
+export function setZoom(zoom) {
+    return {
+        type: 'EXPERIMENTS_SET_ZOOM',
+        payload: zoom
+    };
+}
