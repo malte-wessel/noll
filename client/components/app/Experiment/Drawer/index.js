@@ -3,7 +3,6 @@ import React, { PropTypes } from 'react';
 
 import Panel from 'components/ui/Panel';
 import Button from 'components/ui/Button';
-import Scrollbars from 'components/ui/Scrollbars';
 
 import Controls from './Controls';
 import enhance from './enhance';
@@ -18,7 +17,7 @@ const Drawer = props => {
                 <Button to="/" icon="bars" align="left" block>{title}</Button>
             </Panel>
             <Panel
-                 className={styles.panelControls}
+                className={styles.panelControls}
                 title="Controls"
                 icon="sliders"
                 scrollable>
