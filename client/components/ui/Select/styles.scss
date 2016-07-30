@@ -1,0 +1,82 @@
+@import 'style/config.scss';
+
+// Button
+// -----------------------------------------------------------------------------
+
+.container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    height: $input-height;
+    padding: 0 $input-padding;
+    margin-bottom: 0;
+
+    border-radius: $input-radius;
+    border: 1px solid $color-black;
+
+    font-weight: $font-weight-bold;
+    white-space: nowrap;
+    vertical-align: middle;
+    line-height: $input-height;
+
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        opacity: 0.4;
+    }
+}
+
+.label {
+    display: inline-block;
+    flex-grow: 1
+}
+
+.arrow {
+    display: inline-block;
+    font-size: $font-size-sm;
+    flex-grow: 0;
+    margin-left: $input-padding;
+}
+
+.select {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+// Appearance
+// -----------------------------------------------------------------------------
+
+.container {
+    &:hover,
+    &:focus {
+        color: $color-white;
+        background-color: $color-dark-90;
+        box-shadow: inset 0px 1px 0px $color-dark-85;
+    }
+
+    &.active,
+    &:active {
+        color: $color-white;
+        background-color: $color-dark;
+        box-shadow: inset 0px 1px 0px rgba($color-black, 0.2);
+    }
+
+    &, &[disabled] {
+        color: $color-dark-40;
+        background-color: $color-dark-95;
+        box-shadow: inset 0px 1px 0px $color-dark-90;
+    }
+}
