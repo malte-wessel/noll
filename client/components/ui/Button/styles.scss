@@ -76,9 +76,13 @@
 // -----------------------------------------------------------------------------
 
 .appearance-default {
-    &:hover,
-    &:focus {
+    &:hover {
         color: $color-white;
+        background-color: $color-dark-90;
+        box-shadow: inset 0px 1px 0px $color-dark-85;
+    }
+
+    &:focus {
         background-color: $color-dark-90;
         box-shadow: inset 0px 1px 0px $color-dark-85;
     }
@@ -98,9 +102,12 @@
 }
 
 .appearance-invert {
-    &:hover,
-    &:focus {
+    &:hover {
         color: $color-dark-95;
+        background-color: $color-dark-20;
+    }
+
+    &:focus {
         background-color: $color-dark-20;
     }
 
