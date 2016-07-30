@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
-import { play, pause, step, reset, toggleRepeat, zoomIn, zoomOut, zoomReset } from 'actions';
+import { play, pause, step, reset, toggleRepeat, zoomIn, zoomOut, zoomReset, setFps } from 'actions';
 
 const mapStateToProps = createSelector(
     state => state.playing,
@@ -9,14 +9,15 @@ const mapStateToProps = createSelector(
     state => state.zoom,
     state => state.canZoomIn,
     state => state.canZoomOut,
-    (playing, repeat, zoom, canZoomIn, canZoomOut) => ({
-        playing, repeat, zoom, canZoomIn, canZoomOut
+    state => state.fps,
+    (playing, repeat, zoom, canZoomIn, canZoomOut, fps) => ({
+        playing, repeat, zoom, canZoomIn, canZoomOut, fps
     })
 );
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     play, pause, step, reset, toggleRepeat,
-    zoomIn, zoomOut, zoomReset
+    zoomIn, zoomOut, zoomReset, setFps
 }, dispatch);
 
 export default function enhance(Component) {

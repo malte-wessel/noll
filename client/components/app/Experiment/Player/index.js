@@ -22,9 +22,10 @@ const Player = createClass({
         values: PropTypes.object.isRequired,
         stageWidth: PropTypes.number,
         stageHeight: PropTypes.number,
+        fps: PropTypes.number.isRequired,
         zoom: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number
+            PropTypes.number,
+            PropTypes.string
         ]).isRequired,
         initialize: PropTypes.func.isRequired,
         update: PropTypes.func.isRequired,
@@ -116,11 +117,13 @@ const Player = createClass({
     },
 
     loop() {
-        const { config, playing } = this.props;
-        const { delay } = config;
+        const { fps, playing } = this.props;
         if (!playing) return;
-        if (delay) this.delayTimer = setTimeout(this.step, delay);
-        else this.step();
+        if (fps && fps !== 60) {
+            this.delayTimer = setTimeout(this.step, 1000 / fps);
+        } else {
+            this.step();
+        }
     },
 
     step(loop = true) {
@@ -181,6 +184,7 @@ const Player = createClass({
             zoom,
             stageWidth,
             stageHeight,
+            fps,
             initialize,
             update,
             config,

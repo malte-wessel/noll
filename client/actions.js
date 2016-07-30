@@ -78,3 +78,10 @@ export function setStageSize({ width, height }) {
         payload: { width, height }
     };
 }
+
+export function setFps(fps) {
+    return {
+        type: 'SET_FPS',
+        payload: parseInt(fps, 10)
+    };
+}

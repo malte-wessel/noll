@@ -12,7 +12,8 @@ const initialState = {
     canZoomIn: true,
     canZoomOut: true,
     stageWidth: undefined,
-    stageHeight: undefined
+    stageHeight: undefined,
+    fps: 60
 };
 
 export default function (state = initialState, action) {
@@ -115,6 +116,12 @@ export default function (state = initialState, action) {
                 ...state,
                 stageWidth: action.payload.width,
                 stageHeight: action.payload.height
+            };
+        }
+        case 'SET_FPS': {
+            return {
+                ...state,
+                fps: action.payload
             };
         }
         default: {
