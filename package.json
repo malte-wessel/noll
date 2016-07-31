@@ -7,6 +7,7 @@
     "watch": "webpack --config webpack.client.config.js --watch",
     "example": "cd ./example && node ../server"
   },
+  "author": "Malte Wessel",
   "license": "MIT",
   "devDependencies": {
     "classnames": "^2.2.3",
