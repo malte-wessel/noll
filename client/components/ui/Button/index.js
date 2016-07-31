@@ -1,11 +1,12 @@
 import React, { PropTypes, createClass } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router';
+import pure from 'recompose/pure';
 
 import Icon from 'components/ui/Icon';
 import styles from './styles.scss';
 
-export default createClass({
+const Button = createClass({
 
     displayName: 'Button',
 
@@ -77,3 +78,5 @@ export default createClass({
         );
     }
 });
+
+export default pure(Button);

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import cn from 'classnames';
+import pure from 'recompose/pure';
 import styles from './styles.scss';
 
 const Icon = props => {
@@ -15,4 +16,4 @@ Icon.propTypes = {
     padded: PropTypes.bool
 };
 
-export default Icon;
+export default pure(Icon);

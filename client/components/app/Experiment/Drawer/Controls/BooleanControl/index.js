@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Checkbox from 'components/ui/Checkbox';
+import enhance from './enhance';
 
 const BooleanControl = props => {
     const { control, value, onChange, className } = props;
@@ -21,4 +22,4 @@ BooleanControl.propTypes = {
 };
 
 
-export default BooleanControl;
+export default enhance(BooleanControl);

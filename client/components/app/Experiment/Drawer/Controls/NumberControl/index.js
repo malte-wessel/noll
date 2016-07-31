@@ -1,6 +1,8 @@
 import cn from 'classnames';
 import React, { PropTypes } from 'react';
 import Slider from 'components/ui/Slider';
+
+import enhance from './enhance';
 import styles from './styles.scss';
 
 const NumberControl = props => {
@@ -33,4 +35,4 @@ NumberControl.propTypes = {
 };
 
 
-export default NumberControl;
+export default enhance(NumberControl);

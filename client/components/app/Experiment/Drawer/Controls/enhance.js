@@ -1,6 +1,9 @@
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+
 import * as actions from 'actions';
 import getExperiment from 'utils/getExperiment';
 import getValues from 'utils/getValues';
@@ -21,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(actions, dispatch)
 });
 
-export default function enhance(Component) {
-    return connect(mapStateToProps, mapDispatchToProps)(Component);
-}
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    pure
+);

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import cn from 'classnames';
 import styles from './styles.scss';
+import pure from 'recompose/pure';
 
 const ButtonGroup = props => {
     const { children, className, ...rest } = props;
@@ -16,4 +17,4 @@ ButtonGroup.propTypes = {
     className: PropTypes.string,
 };
 
-export default ButtonGroup;
+export default pure(ButtonGroup);

@@ -1,9 +1,10 @@
 import cn from 'classnames';
 import React, { PropTypes, createClass } from 'react';
+import pure from 'recompose/pure';
 
 import styles from './styles.scss';
 
-export default createClass({
+const Checkbox = createClass({
 
     displayName: 'Checkbox',
 
@@ -52,3 +53,5 @@ export default createClass({
         );
     }
 });
+
+export default pure(Checkbox);

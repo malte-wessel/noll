@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
 
 const mapStateToProps = createSelector(
     (state, props) => {
@@ -13,6 +15,7 @@ const mapStateToProps = createSelector(
     })
 );
 
-export default function enhance(Component) {
-    return connect(mapStateToProps)(Component);
-}
+export default compose(
+    connect(mapStateToProps),
+    pure
+);

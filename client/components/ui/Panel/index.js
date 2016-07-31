@@ -1,5 +1,6 @@
 import React, { createClass, PropTypes } from 'react';
 import cn from 'classnames';
+import pure from 'recompose/pure';
 
 import Icon from 'components/ui/Icon';
 import Scrollbars from 'components/ui/Scrollbars';
@@ -71,4 +72,4 @@ const Panel = createClass({
     }
 });
 
-export default Panel;
+export default pure(Panel);

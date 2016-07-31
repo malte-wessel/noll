@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import enhance from './enhance';
 import styles from './styles.scss';
 
 const App = props => {
@@ -14,4 +15,4 @@ App.propTypes = {
     children: PropTypes.node.isRequired
 };
 
-export default App;
+export default enhance(App);

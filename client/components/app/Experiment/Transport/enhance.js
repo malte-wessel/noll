@@ -1,6 +1,9 @@
 import { bindActionCreators } from 'redux';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
+
 import { play, pause, step, reset, toggleRepeat, zoomIn, zoomOut, zoomReset, setFps } from 'actions';
 
 const mapStateToProps = createSelector(
@@ -20,6 +23,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     zoomIn, zoomOut, zoomReset, setFps
 }, dispatch);
 
-export default function enhance(Component) {
-    return connect(mapStateToProps, mapDispatchToProps)(Component);
-}
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    pure
+);

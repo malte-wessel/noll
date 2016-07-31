@@ -2,6 +2,8 @@ import map from 'lodash/map';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
 
 const mapStateToProps = createSelector(
     state => state.experimentsById,
@@ -13,6 +15,8 @@ const mapStateToProps = createSelector(
     })
 );
 
-export default function enhance(Component) {
-    return withRouter(connect(mapStateToProps)(Component));
-}
+export default compose(
+    withRouter,
+    connect(mapStateToProps),
+    pure
+);

@@ -1,6 +1,8 @@
 import React, { createClass, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import cn from 'classnames';
+import pure from 'recompose/pure';
+
 import styles from './styles.scss';
 import {
     fitStep,
@@ -18,7 +20,7 @@ const stringOrNumberType = PropTypes.oneOfType([
     PropTypes.number
 ]);
 
-export default createClass({
+const Slider = createClass({
 
     displayName: 'Slider',
 
@@ -214,3 +216,5 @@ export default createClass({
         );
     }
 });
+
+export default pure(Slider);
