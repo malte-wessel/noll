@@ -5,6 +5,7 @@ import Button from 'components/ui/Button';
 
 import NumberControl from './NumberControl';
 import BooleanControl from './BooleanControl';
+import SelectControl from './SelectControl';
 
 import enhance from './enhance';
 import styles from './styles.scss';
@@ -12,6 +13,7 @@ import styles from './styles.scss';
 const ControlByType = {
     number: NumberControl,
     boolean: BooleanControl,
+    select: SelectControl
 };
 
 const Controls = createClass({
