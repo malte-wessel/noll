@@ -41,8 +41,8 @@ const Player = createClass({
     },
 
     componentDidMount() {
-        this.reset();
         this.setDimensions();
+        this.reset();
         window.addEventListener('resize', this.handleWindowResize);
     },
 
@@ -81,6 +81,7 @@ const Player = createClass({
 
     componentWillUnmount() {
         this.pause();
+        this.dispose();
         window.removeEventListener('resize', this.handleWindowResize);
     },
 
@@ -106,13 +107,20 @@ const Player = createClass({
     reset() {
         const { canvas } = this.refs;
         const { initialize, values } = this.props;
-        const { width, height } = canvas;
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, width, height);
+        this.dispose();
+
         try {
             this.data = initialize(canvas, values);
         } catch (error) {
             this.setState({ error });
+        }
+    },
+
+    dispose() {
+        if (this.data) {
+            const { dispose } = this.data;
+            if (typeof dispose === 'function') dispose();
+            this.data = undefined;
         }
     },
 
@@ -235,10 +243,7 @@ const Player = createClass({
                         width={width}
                         height={height}
                         style={canvasStyle}/>
-                    {error &&
-                        <RedBox
-                            error={error}/>
-                    }
+                    {error && <RedBox error={error}/>}
                 </Scrollbars>
             </div>
         );
