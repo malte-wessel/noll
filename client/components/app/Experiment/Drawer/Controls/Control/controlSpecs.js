@@ -3,6 +3,7 @@ import NumberControl from './NumberControl';
 import BooleanControl from './BooleanControl';
 import SelectControl from './SelectControl';
 import TextControl from './TextControl';
+import ColorControl from './ColorControl';
 
 import { isNumber, isBoolean, isArray } from 'utils/validate';
 
@@ -36,6 +37,10 @@ export default {
     },
     text: {
         Component: TextControl,
+        rules: []
+    },
+    color: {
+        Component: ColorControl,
         rules: []
     }
 };

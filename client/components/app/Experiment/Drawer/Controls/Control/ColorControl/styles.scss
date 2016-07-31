@@ -1,0 +1,53 @@
+@import 'style/config.scss';
+
+.control {}
+
+.head {
+    display: flex;
+    align-items: center;
+}
+
+.label {
+    flex-grow: 1;
+}
+
+.text {
+    flex-basis: 30%;
+    flex-grow: 0;
+    font-size: $font-size-sm;
+    margin-left: $size-base;
+}
+
+.input {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.toggle {
+    font-size: $font-size-sm;
+    flex-grow: 0;
+}
+
+.toggleButton {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.toggleIndicator {
+    border-radius: $input-radius;
+    height: 1em;
+    width: 3em;
+    background-color: red;
+    border: 1px solid $color-black;
+    box-shadow: inset 0px 1px 0px rgba($color-black, 0.2);
+}
+
+.picker {
+    margin-top: $size-sm;
+    padding: $size-sm;
+    border-radius: $input-radius;
+    border: 1px solid $color-black;
+    background-color: $color-dark-95;
+    box-shadow: inset 0px 1px 0px $color-dark-97;
+}
