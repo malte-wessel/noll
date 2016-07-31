@@ -2,19 +2,22 @@ import cn from 'classnames';
 import React, { PropTypes } from 'react';
 
 import Panel from 'components/ui/Panel';
-import Button from 'components/ui/Button';
+import Select from 'components/ui/Select';
 
 import Controls from './Controls';
 import enhance from './enhance';
 import styles from './styles.scss';
 
 const Drawer = props => {
-    const { id, config, className } = props;
-    const { title } = config;
+    const { id, experimentOptions, router, className } = props;
     return (
         <div className={cn(styles.container, className)}>
             <Panel className={styles.panelMain}>
-                <Button to="/" icon="bars" align="left" block>{title}</Button>
+                <Select
+                    onChange={(event) => router.push(`/${event.target.value}`)}
+                    options={experimentOptions}
+                    value={id}
+                    block/>
             </Panel>
             <Panel
                 className={styles.panelControls}
@@ -29,7 +32,8 @@ const Drawer = props => {
 
 Drawer.propTypes = {
     id: PropTypes.string.isRequired,
-    config: PropTypes.object.isRequired,
+    experimentOptions: PropTypes.array.isRequired,
+    router: PropTypes.object.isRequired,
     className: PropTypes.string
 };
 

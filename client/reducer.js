@@ -24,6 +24,14 @@ export default function (state = initialState, action) {
                 experimentsById: action.payload
             };
         }
+        case 'CLEAR_EXPERIMENT': {
+            return {
+                ...state,
+                playing: false,
+                finished: true,
+                values: {}
+            };
+        }
         case 'PLAY': {
             return {
                 ...state,

@@ -14,7 +14,7 @@ const Experiment = props => {
         <div className={styles.container}>
             <div className={styles.main}>
                 <div className={styles.stage}>
-                    <Player id={id} className={styles.player}/>
+                    <Player key={id} id={id} className={styles.player}/>
                 </div>
                 <Transport className={styles.transport}/>
             </div>

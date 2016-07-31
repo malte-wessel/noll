@@ -5,6 +5,12 @@ export function setExperiments(experimentsById) {
     };
 }
 
+export function clearExperiment() {
+    return {
+        type: 'CLEAR_EXPERIMENT'
+    };
+}
+
 export function play() {
     return {
         type: 'PLAY'

@@ -1,22 +1,18 @@
+import map from 'lodash/map';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
-
-const getExperiment = (state, props) => {
-    const { id } = props;
-    const { experimentsById } = state;
-    return experimentsById[id];
-};
+import { withRouter } from 'react-router';
 
 const mapStateToProps = createSelector(
-    (state, props) => {
-        const experiment = getExperiment(state, props);
-        return experiment && experiment.config;
-    },
-    (config) => ({
-        config
+    state => state.experimentsById,
+    (experimentsById) => ({
+        experimentOptions: map(experimentsById, (experiment, id) => ({
+            value: id,
+            label: experiment.config.title
+        }))
     })
 );
 
 export default function enhance(Component) {
-    return connect(mapStateToProps)(Component);
+    return withRouter(connect(mapStateToProps)(Component));
 }
