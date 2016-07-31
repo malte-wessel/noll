@@ -3,9 +3,14 @@
     "update": "./update.js",
     "initialize": "./initialize.js",
     "controls": [{
+        "key": "bgcolor",
+        "label": "Background color",
+        "type": "color",
+        "value": "#ffde00"
+    }, {
         "key": "color",
         "label": "Color color color",
         "type": "color",
-        "value": "#fff000"
+        "value": "#303030"
     }]
 }

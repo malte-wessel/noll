@@ -6,19 +6,19 @@ import {
     PointLight,
     TorusKnotGeometry,
     MeshStandardMaterial,
-    Mesh
+    Mesh,
+    Color
 } from 'three';
 
-export default function initialize(canvas) {
+export default function initialize(canvas, values) {
     const { width, height } = canvas;
+    const { bgcolor } = values;
     const renderer = new WebGLRenderer({ canvas, antialias: true });
+    renderer.setClearColor(new Color().setHex(bgcolor.replace('#', '0x')));
 
     const scene = new Scene();
     const camera = new PerspectiveCamera(75, width / height, 0.1, 50);
     camera.position.z = 30;
-
-    const ambientLight = new AmbientLight(0x000000);
-    scene.add(ambientLight);
 
     const lights = [];
     lights[0] = new PointLight(0xffffff, 1, 0);
