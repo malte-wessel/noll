@@ -5,6 +5,25 @@
     "update": "./update.js",
     "initialize": "./initialize.js",
     "controls": [{
+        "key": "palette",
+        "label": "Palette",
+        "type": "Select",
+        "value": "light",
+        "options": [
+            { "value": "light", "label": "Light" },
+            { "value": "dark", "label": "Dark" }
+        ]
+    }, {
+        "key": "showSeeds",
+        "label": "Show seeds",
+        "type": "Boolean",
+        "value": true
+    }, {
+        "key": "showRadiusOfInfluence",
+        "label": "Show radius of influence",
+        "type": "Boolean",
+        "value": false
+    }, {
         "key": "rootsCount",
         "label": "Number of roots",
         "type": "Number",
@@ -28,16 +47,6 @@
         "min": 1,
         "max": 150,
         "step": 1
-    }, {
-        "key": "showSeeds",
-        "label": "Show seeds",
-        "type": "Boolean",
-        "value": true
-    }, {
-        "key": "showRadiusOfInfluence",
-        "label": "Show radius of influence",
-        "type": "Boolean",
-        "value": false
     }, {
         "key": "nodeLength",
         "label": "Node length",

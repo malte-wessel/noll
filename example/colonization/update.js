@@ -5,6 +5,7 @@ import draw from './draw';
 export default function update(canvas, data, values) {
     const { roots, seeds, queue } = data;
     const {
+        palette,
         radiusOfInfluence,
         showSeeds,
         showRadiusOfInfluence,
@@ -50,6 +51,7 @@ export default function update(canvas, data, values) {
     }
 
     draw(canvas, {
+        palette,
         roots,
         seeds,
         showSeeds,
