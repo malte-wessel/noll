@@ -19,27 +19,32 @@ const Controls = props => {
 
     return (
         <div className={cn(styles.container, className)}>
-            <div className={styles.controls}>
-                {controls.map(control => {
-                    const { key, type } = control;
-                    const Control = ControlByType[type.toLowerCase()];
-                    return (
-                        <Control
-                            key={key}
-                            control={control}
-                            value={values[key]}
-                            onChange={value => setValue(key, value)}
-                            className={styles.control}/>);
-                })}
-            </div>
-            <div className={styles.actions}>
-                <Button
-                    onClick={resetValues}
-                    icon="times"
-                    block>
-                    Use defaults
-                </Button>
-            </div>
+            {controls.length ?
+                <div className={styles.controls}>
+                    {controls.map(control => {
+                        const { key, type } = control;
+                        const Control = ControlByType[type.toLowerCase()];
+                        return (
+                            <Control
+                                key={key}
+                                control={control}
+                                value={values[key]}
+                                onChange={value => setValue(key, value)}
+                                className={styles.control}/>);
+                    })}
+                    <div className={styles.actions}>
+                        <Button
+                            onClick={resetValues}
+                            icon="times"
+                            block>
+                            Use defaults
+                        </Button>
+                    </div>
+                </div> :
+                <div className={styles.nocontrols}>
+                    You haven't defined any controls.
+                </div>
+            }
         </div>
     );
 };

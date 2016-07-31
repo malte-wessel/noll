@@ -1,7 +1,7 @@
 @import 'style/config.scss';
 
 .controls {
-    margin-bottom: $size-base;
+
 }
 
 .control {
@@ -13,5 +13,6 @@
 }
 
 .actions {
+    margin-top: $size-base;
     font-size: $font-size-sm;
 }

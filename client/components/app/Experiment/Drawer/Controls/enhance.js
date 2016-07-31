@@ -12,7 +12,7 @@ const mapStateToProps = createSelector(
     },
     state => state.values,
     (controls, values) => ({
-        controls,
+        controls: controls || [],
         values: getValues(controls, values)
     })
 );
