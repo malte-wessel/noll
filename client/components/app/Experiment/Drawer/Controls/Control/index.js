@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import keys from 'lodash/keys';
 import React, { PropTypes } from 'react';
 import validate, { isNotUndefined, isOneOf } from 'utils/validate';
@@ -17,7 +18,7 @@ const defaultRules = [
 ];
 
 const Control = props => {
-    const { control, className } = props;
+    const { control, className, ...rest } = props;
     const { label, key, type } = control;
     const { Component, rules } = controlSpecs[type] || {};
     const finalRules = defaultRules.concat(rules);
@@ -37,13 +38,16 @@ const Control = props => {
             </div>
         );
     }
-    return <Component {...props}/>;
+    return (
+        <Component
+            className={cn(styles.control, className)}
+            control={control}
+            {...rest}/>
+    );
 };
 
 Control.propTypes = {
     control: PropTypes.object.isRequired,
-    value: PropTypes.any,
-    onChange: PropTypes.func.isRequired,
     className: PropTypes.string
 };
 

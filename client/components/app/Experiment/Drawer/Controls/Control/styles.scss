@@ -15,3 +15,7 @@
 .head + .message {
     margin-top: $size-sm;
 }
+
+.control {
+    user-select: none;
+}

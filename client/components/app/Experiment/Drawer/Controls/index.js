@@ -36,24 +36,28 @@ const Controls = createClass({
         }, {});
     },
 
+    renderControl(control) {
+        const { values } = this.props;
+        const { key } = control;
+        return (
+            <Control
+                key={key}
+                control={control}
+                value={values[key]}
+                onChange={this.handlers[key]}
+                className={styles.control}/>
+        );
+    },
+
     render() {
-        const { controls, values, actions, className } = this.props;
+        const { controls, actions, className } = this.props;
         const { resetValues } = actions;
 
         return (
             <div className={cn(styles.container, className)}>
                 {controls.length ?
                     <div className={styles.controls}>
-                        {controls.map(control => {
-                            const { key } = control;
-                            return (
-                                <Control
-                                    key={key}
-                                    control={control}
-                                    value={values[key]}
-                                    onChange={this.handlers[key]}
-                                    className={styles.control}/>);
-                        })}
+                        {controls.map(this.renderControl)}
                         <div className={styles.actions}>
                             <Button
                                 onClick={resetValues}
