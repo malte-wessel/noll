@@ -14,7 +14,7 @@ const Drawer = props => {
         <div className={cn(styles.container, className)}>
             <Panel className={styles.panelMain}>
                 <Select
-                    onChange={(event) => router.push(`/${event.target.value}`)}
+                    onChange={value => router.push(`/${value}`)}
                     options={experimentOptions}
                     value={id}
                     block/>

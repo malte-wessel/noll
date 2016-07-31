@@ -41,13 +41,6 @@ const Transport = createClass({
         className: PropTypes.string
     },
 
-    handleChangeFps(event) {
-        const { setFps } = this.props;
-        const { target } = event;
-        const { value } = target;
-        setFps(value);
-    },
-
     render() {
         const {
             playing,
@@ -76,7 +69,7 @@ const Transport = createClass({
                 {...rest}>
                 <div className={styles.left}>
                     <Select
-                        onChange={this.handleChangeFps}
+                        onChange={setFps}
                         value={fps}
                         options={fpsOptions}/>
                 </div>
