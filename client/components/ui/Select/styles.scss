@@ -31,6 +31,10 @@
     }
 }
 
+.inner {
+    display: flex;
+}
+
 .label {
     display: inline-block;
     flex-grow: 1
@@ -54,6 +58,10 @@
     border: 0;
     opacity: 0;
     cursor: pointer;
+}
+
+.block {
+    display: block;
 }
 
 // Appearance
