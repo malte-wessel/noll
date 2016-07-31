@@ -2,7 +2,6 @@ import {
     WebGLRenderer,
     Scene,
     PerspectiveCamera,
-    AmbientLight,
     PointLight,
     TorusKnotGeometry,
     MeshStandardMaterial,
