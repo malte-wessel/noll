@@ -20,7 +20,7 @@ function rect(ctx, p, width = 1, height = 1, color = 'black') {
     ctx.fillRect(p[0], p[1], width, height);
 }
 
-function drawTree(ctx, node, maxDepth, color) {
+function renderTree(ctx, node, maxDepth, color) {
     const position = node.getPosition();
     const children = node.getChildren();
     // if (!children.length) circle(ctx, position, 3, 'black');
@@ -28,7 +28,7 @@ function drawTree(ctx, node, maxDepth, color) {
         const childPosition = child.getPosition();
         const childDepth = child.getDepth();
         line(ctx, position, childPosition, 5 - (3 / maxDepth * childDepth), color);
-        drawTree(ctx, child, maxDepth, color);
+        renderTree(ctx, child, maxDepth, color);
     });
 }
 
@@ -49,7 +49,7 @@ const palettes = {
     dark: ['black', 'white']
 };
 
-export default function draw(canvas, options) {
+export default function render(canvas, options) {
     const {
         palette,
         roots,
@@ -67,7 +67,7 @@ export default function draw(canvas, options) {
     rect(ctx, [0, 0], width, height, background);
     roots.forEach(root => {
         const maxDepth = getMaxDepth(root);
-        drawTree(ctx, root, maxDepth, foreground);
+        renderTree(ctx, root, maxDepth, foreground);
     });
 
     if (showRadiusOfInfluence) {

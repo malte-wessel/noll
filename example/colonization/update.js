@@ -1,6 +1,6 @@
 import Node from './Node';
 import { add, subtract, scale, normalize, distance } from 'gl-vec2';
-import draw from './draw';
+import render from './render';
 
 export default function update(canvas, data, values) {
     const { roots, seeds, queue } = data;
@@ -18,7 +18,6 @@ export default function update(canvas, data, values) {
     } = values;
 
     for (let i = 0; queue.length && i < iterationsPerFrame; i++) {
-        console.info('Nodes in queue', queue.length);
         const node = queue[0];
         const point = node.getPosition();
         const depth = node.getDepth();
@@ -50,7 +49,9 @@ export default function update(canvas, data, values) {
         node.addChild(child);
     }
 
-    draw(canvas, {
+    console.info('Nodes in queue', queue.length);
+
+    render(canvas, {
         palette,
         roots,
         seeds,
