@@ -1,5 +1,11 @@
 {
     "title": "Three.js",
     "update": "./update.js",
-    "initialize": "./initialize.js"
+    "initialize": "./initialize.js",
+    "controls": [{
+        "key": "color",
+        "label": "Color color color",
+        "type": "color",
+        "value": "#fff000"
+    }]
 }
