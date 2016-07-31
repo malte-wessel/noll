@@ -1,12 +1,31 @@
-/* eslint-disable no-var */
+/* eslint-disable no-var, object-shorthand, prefer-template */
 var rucksack = require('rucksack-css');
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractTextPlugin = new ExtractTextPlugin('client.css');
 
+var env = process.env.NODE_ENV;
+var plugins = [
+    extractTextPlugin,
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(env) }),
+];
+var devtool = 'eval';
+var localIdentName = '[local]___[hash:base64:5]';
+
+if (env === 'production') {
+    plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    }));
+    devtool = undefined;
+    localIdentName = '[hash:base64:8]';
+}
+
 module.exports = {
-    devtool: 'eval',
+    devtool: devtool,
     entry: [
         './client/index'
     ],
@@ -21,16 +40,14 @@ module.exports = {
             test: /\.scss$/,
             include: path.join(__dirname, 'client'),
             loader: extractTextPlugin.extract([
-                'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[local]___[hash:base64:5]',
+                'css-loader?modules&sourceMap&importLoaders=1&localIdentName=' + localIdentName,
                 'postcss-loader',
                 'sass?outputStyle=expanded'
             ].join('!'))
         }, {
             test: /\.js$/,
-            loaders: ['babel'],
-            include: [
-                path.join(__dirname, 'client')
-            ],
+            loader: 'babel',
+            include: [path.join(__dirname, 'client')],
             exclude: /node_modules/
         }],
     },
@@ -43,9 +60,7 @@ module.exports = {
     postcss: [
         rucksack({ autoprefixer: true })
     ],
-    plugins: [
-        extractTextPlugin
-    ],
+    plugins: plugins,
     sassLoader: {
         includePaths: [path.resolve(__dirname, 'client')]
     }
