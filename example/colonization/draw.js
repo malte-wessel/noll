@@ -55,7 +55,7 @@ export default function draw(canvas, options) {
 
     const { width, height } = canvas;
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, width, height);
+    rect(ctx, [0, 0], width, height, 'white');
     roots.forEach(root => {
         const maxDepth = getMaxDepth(root);
         drawTree(ctx, root, maxDepth);
