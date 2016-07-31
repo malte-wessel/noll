@@ -2,6 +2,8 @@ import every from 'lodash/every';
 import NumberControl from './NumberControl';
 import BooleanControl from './BooleanControl';
 import SelectControl from './SelectControl';
+import TextControl from './TextControl';
+
 import { isNumber, isBoolean, isArray } from 'utils/validate';
 
 export default {
@@ -31,5 +33,9 @@ export default {
                 'Every item in `options` must habe a `value` and `label` property'
             ]
         ]
+    },
+    text: {
+        Component: TextControl,
+        rules: []
     }
 };
