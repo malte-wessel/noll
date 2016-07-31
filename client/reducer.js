@@ -27,9 +27,13 @@ export default function (state = initialState, action) {
         case 'CLEAR_EXPERIMENT': {
             return {
                 ...state,
-                playing: false,
-                finished: true,
-                values: {}
+                playing: initialState.playing,
+                finished: initialState.finished,
+                values: {},
+                zoom: initialState.zoom,
+                canZoomIn: initialState.canZoomIn,
+                canZoomOut: initialState.canZoomOut,
+                fps: initialState.fps
             };
         }
         case 'PLAY': {

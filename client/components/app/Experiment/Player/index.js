@@ -54,20 +54,22 @@ const Player = createClass({
         if (shouldResetError) this.setState({ error: undefined });
     },
 
+    componentWillUpdate() {
+        const { scrollbars } = this.refs;
+        this.scrollbarValuesPrev = scrollbars.getValues();
+    },
+
     componentDidUpdate(propsPrev) {
-        const { id, playing, step, reset, initialize } = this.props;
+        const { playing, step, reset, initialize, zoom } = this.props;
         const {
-            id: idPrev,
             playing: playingPrev,
             step: stepPrev,
             reset: resetPrev,
-            initialize: initializePrev
+            initialize: initializePrev,
+            zoom: zoomPrev,
         } = propsPrev;
 
-        const shouldReset =
-            id !== idPrev ||
-            initialize !== initializePrev ||
-            reset !== resetPrev;
+        const shouldReset = initialize !== initializePrev || reset !== resetPrev;
 
         if (shouldReset) this.reset();
 
@@ -77,6 +79,7 @@ const Player = createClass({
         }
 
         if (step !== stepPrev) this.step(false);
+        if (zoom !== zoomPrev) this.updateScrollbarPosition();
     },
 
     componentWillUnmount() {
@@ -91,6 +94,33 @@ const Player = createClass({
         const $player = findDOMNode(this);
         const { offsetWidth: width, offsetHeight: height } = $player;
         setStageSize({ width, height });
+    },
+
+    updateScrollbarPosition() {
+        const {
+            left: leftPrev,
+            top: topPrev,
+            scrollWidth: scrollWidthPrev,
+            scrollHeight: scrollHeightPrev,
+            clientWidth: clientWidthPrev,
+            clientHeight: clientHeightPrev
+        } = this.scrollbarValuesPrev;
+
+        const {
+            scrollWidth,
+            scrollHeight,
+            clientWidth,
+            clientHeight
+        } = this.refs.scrollbars.getValues();
+
+        const hasLeftPrev = scrollWidthPrev - clientWidthPrev > 0;
+        const hasTopPrev = scrollHeightPrev - clientHeightPrev > 0;
+
+        const left = (hasLeftPrev ? leftPrev : 0.5) * (scrollWidth - clientWidth);
+        const top = (hasTopPrev ? topPrev : 0.5) * (scrollHeight - clientHeight);
+
+        this.refs.scrollbars.scrollLeft(left);
+        this.refs.scrollbars.scrollTop(top);
     },
 
     play() {
@@ -236,7 +266,10 @@ const Player = createClass({
             <div
                 className={cn(styles.container, className)}
                 {...props}>
-                <Scrollbars>
+                <Scrollbars
+                    ref="scrollbars"
+                    thumbHorizontalClassName={styles.thumb}
+                    thumbVerticalClassName={styles.thumb}>
                     <canvas
                         className={styles.canvas}
                         ref="canvas"
