@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import React, { PropTypes, createClass } from 'react';
 import pure from 'recompose/pure';
+import Label from 'components/ui/Label';
 
 import styles from './styles.scss';
 
@@ -46,9 +47,9 @@ const Checkbox = createClass({
                     checked={!!value}
                     className={styles.checkbox}/>
                 <div className={styles.custom}/>
-                <div className={styles.label}>
+                <Label className={styles.label}>
                     {label}
-                </div>
+                </Label>
             </label>
         );
     }

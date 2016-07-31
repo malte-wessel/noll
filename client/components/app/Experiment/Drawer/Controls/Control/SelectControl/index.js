@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import React, { PropTypes } from 'react';
 import Select from 'components/ui/Select';
+import Label from 'components/ui/Label';
 
 import enhance from './enhance';
 import styles from './styles.scss';
@@ -10,7 +11,7 @@ const SelectControl = props => {
     const { label, options } = control;
     return (
         <div className={cn(styles.control, className)}>
-            <div className={styles.label}>{label}</div>
+            <Label className={styles.label}>{label}</Label>
             <div className={styles.input}>
                 <Select
                     value={value}

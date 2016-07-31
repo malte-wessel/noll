@@ -2,6 +2,7 @@ import React, { createClass, PropTypes } from 'react';
 import cn from 'classnames';
 import pure from 'recompose/pure';
 
+import Label from 'components/ui/Label';
 import Icon from 'components/ui/Icon';
 import styles from './styles.scss';
 
@@ -61,9 +62,9 @@ const Select = createClass({
                     className
                 )}>
                 <div className={styles.inner}>
-                    <div className={styles.label}>
+                    <Label className={styles.label}>
                         {getLabel(options, value)}
-                    </div>
+                    </Label>
                     <div className={styles.arrow}>
                         <Icon icon="chevron-down"/>
                     </div>

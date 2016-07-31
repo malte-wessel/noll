@@ -20,6 +20,7 @@
 }
 
 .custom {
+    flex-shrink: 0;
     display: inline-block;
     vertical-align: middle;
     width: 1em;
@@ -30,6 +31,7 @@
 }
 
 .label {
+    flex-shrink: 1;
     margin-left: 0.5em;
 }
 

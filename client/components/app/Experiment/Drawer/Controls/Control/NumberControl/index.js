@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import React, { PropTypes } from 'react';
 import Slider from 'components/ui/Slider';
+import Label from 'components/ui/Label';
 
 import enhance from './enhance';
 import styles from './styles.scss';
@@ -11,7 +12,7 @@ const NumberControl = props => {
     return (
         <div className={cn(styles.control, className)}>
             <div className={styles.head}>
-                <div className={styles.label}>{label}</div>
+                <Label className={styles.label}>{label}</Label>
                 <div className={styles.value}>{value}</div>
             </div>
             <Slider

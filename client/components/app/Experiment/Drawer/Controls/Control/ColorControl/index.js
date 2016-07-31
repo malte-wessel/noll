@@ -2,6 +2,7 @@ import cn from 'classnames';
 import React, { createClass, PropTypes } from 'react';
 import Input from 'components/ui/Input';
 import Button from 'components/ui/Button';
+import Label from 'components/ui/Label';
 import ColorPicker from 'components/ui/ColorPicker';
 
 import enhance from './enhance';
@@ -42,7 +43,7 @@ const ColorControl = createClass({
         return (
             <div className={cn(styles.control, className)}>
                 <div className={styles.head}>
-                    <div className={styles.label}>{label}</div>
+                    <Label className={styles.label}>{label}</Label>
                     <div className={styles.text}>
                         <Input
                             value={value}
