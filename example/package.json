@@ -9,8 +9,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "bunny": "^1.0.1",
     "d3-quadtree": "^1.0.0",
+    "gl-geometry": "^3.1.1",
+    "gl-mat4": "^1.1.4",
+    "gl-shader": "^4.2.0",
     "gl-vec2": "^1.0.0",
-    "three": "^0.79.0"
+    "gl-wireframe": "^1.0.1",
+    "three": "^0.79.0",
+    "turntable-camera": "^1.0.0",
+    "webgl-context": "^2.2.0"
   }
 }

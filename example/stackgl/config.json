@@ -1,0 +1,5 @@
+{
+    "title": "stackgl",
+    "update": "./update.js",
+    "initialize": "./initialize.js"
+}
