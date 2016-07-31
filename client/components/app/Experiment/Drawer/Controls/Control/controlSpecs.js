@@ -31,7 +31,7 @@ export default {
                 options => every(options, ({ value, label }) =>
                     value !== undefined && label !== undefined
                 ),
-                'Every item in `options` must habe a `value` and `label` property'
+                'Every item in `options` must have a `value` and `label` property'
             ]
         ]
     },
