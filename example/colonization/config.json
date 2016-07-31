@@ -7,7 +7,7 @@
     "controls": [{
         "key": "palette",
         "label": "Palette",
-        "type": "Select",
+        "type": "select",
         "value": "light",
         "options": [
             { "value": "light", "label": "Light" },
@@ -16,17 +16,17 @@
     }, {
         "key": "showSeeds",
         "label": "Show seeds",
-        "type": "Boolean",
+        "type": "boolean",
         "value": true
     }, {
         "key": "showRadiusOfInfluence",
         "label": "Show radius of influence",
-        "type": "Boolean",
+        "type": "boolean",
         "value": false
     }, {
         "key": "rootsCount",
         "label": "Number of roots",
-        "type": "Number",
+        "type": "number",
         "value": 1,
         "min": 1,
         "max": 100,
@@ -34,7 +34,7 @@
     }, {
         "key": "seedsCount",
         "label": "Number of seeds",
-        "type": "Number",
+        "type": "number",
         "value": 15000,
         "min": 100,
         "max": 50000,
@@ -42,7 +42,7 @@
     }, {
         "key": "radiusOfInfluence",
         "label": "Radius of influence",
-        "type": "Number",
+        "type": "number",
         "value": 10,
         "min": 1,
         "max": 150,
@@ -50,7 +50,7 @@
     }, {
         "key": "nodeLength",
         "label": "Node length",
-        "type": "Number",
+        "type": "number",
         "value": 5,
         "min": 1,
         "max": 20,
@@ -58,7 +58,7 @@
     }, {
         "key": "maxDepth",
         "label": "Max node depth",
-        "type": "Number",
+        "type": "number",
         "value": 1000,
         "min": 1,
         "max": 2000,
@@ -66,7 +66,7 @@
     }, {
         "key": "maxChilds",
         "label": "Max child nodes",
-        "type": "Number",
+        "type": "number",
         "value": 3,
         "min": 1,
         "max": 10,
@@ -74,7 +74,7 @@
     }, {
         "key": "minSiblingDistance",
         "label": "Min sibling distance",
-        "type": "Number",
+        "type": "number",
         "value": 5,
         "min": 0,
         "max": 10,
@@ -82,7 +82,7 @@
     }, {
         "key": "killDistance",
         "label": "Kill distance",
-        "type": "Number",
+        "type": "number",
         "value": 1.0,
         "min": 0.5,
         "max": 1.5,
@@ -90,7 +90,7 @@
     }, {
         "key": "iterationsPerFrame",
         "label": "Iterations per frame",
-        "type": "Number",
+        "type": "number",
         "value": 75,
         "min": 1,
         "max": 200,

@@ -3,18 +3,9 @@ import cn from 'classnames';
 import React, { createClass, PropTypes } from 'react';
 import Button from 'components/ui/Button';
 
-import NumberControl from './NumberControl';
-import BooleanControl from './BooleanControl';
-import SelectControl from './SelectControl';
-
+import Control from './Control';
 import enhance from './enhance';
 import styles from './styles.scss';
-
-const ControlByType = {
-    number: NumberControl,
-    boolean: BooleanControl,
-    select: SelectControl
-};
 
 const Controls = createClass({
 
@@ -54,8 +45,7 @@ const Controls = createClass({
                 {controls.length ?
                     <div className={styles.controls}>
                         {controls.map(control => {
-                            const { key, type } = control;
-                            const Control = ControlByType[type.toLowerCase()];
+                            const { key } = control;
                             return (
                                 <Control
                                     key={key}
