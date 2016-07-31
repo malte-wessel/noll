@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "d3-quadtree": "^1.0.0",
-    "gl-vec2": "^1.0.0"
+    "gl-vec2": "^1.0.0",
+    "three": "^0.79.0"
   }
 }
