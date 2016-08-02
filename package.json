@@ -10,8 +10,24 @@
     "lint": "eslint client scripts utils",
     "prepublish": "npm run lint && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malte-wessel/noll.git"
+  },
+  "keywords": [
+    "threejs",
+    "glsl",
+    "glslify",
+    "art",
+    "webgl",
+    "canvas"
+  ],
   "author": "Malte Wessel",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malte-wessel/noll/issues"
+  },
+  "homepage": "https://github.com/malte-wessel/noll",
   "bin": "./bin/noll.js",
   "devDependencies": {
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
