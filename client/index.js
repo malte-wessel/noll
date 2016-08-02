@@ -10,7 +10,7 @@ import createStore from './store';
 import { setExperiments, clearExperiment } from './actions';
 import './style.scss';
 
-export default function createClient() {
+module.exports = function createClient() {
     const store = createStore();
     const rootEl = document.getElementById('root');
     const onEnterExperiment = () => store.dispatch(clearExperiment());
@@ -25,4 +25,4 @@ export default function createClient() {
         </Provider>
     ), rootEl);
     return experiments => store.dispatch(setExperiments(experiments));
-}
+};

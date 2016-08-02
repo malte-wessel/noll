@@ -33,7 +33,7 @@ module.exports = {
         path: path.join(__dirname, 'entry'),
         filename: 'client.js',
         library: 'client',
-        libraryTarget: 'commonjs2'
+        libraryTarget: 'umd'
     },
     module: {
         loaders: [{
