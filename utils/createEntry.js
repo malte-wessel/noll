@@ -1,23 +1,22 @@
 /* eslint-disable no-var, prefer-arrow-callback, indent, object-shorthand, global-require, func-names, quotes */
 var path = require('path');
 var glob = require('glob');
-var cwd = process.cwd();
 
-var experiments = glob.sync('**/config.json', { cwd: cwd }).map(function (filename) {
-    var dirname = path.dirname(filename);
-    var configFilename = path.join(cwd, filename);
-    var config = require(configFilename);
-    var initializeFilename = path.resolve(cwd, dirname, config.initialize || './initialize.js');
-    var updateFilename = path.resolve(cwd, dirname, config.update || './update.js');
-    return {
-        key: dirname,
-        config: configFilename,
-        initialize: initializeFilename,
-        update: updateFilename
-    };
-});
+function createEntry(cwd) {
+    var experiments = glob.sync('**/config.json', { cwd: cwd }).map(function (filename) {
+        var dirname = path.dirname(filename);
+        var configFilename = path.join(cwd, filename);
+        var config = require(configFilename);
+        var initializeFilename = path.resolve(cwd, dirname, config.initialize || './initialize.js');
+        var updateFilename = path.resolve(cwd, dirname, config.update || './update.js');
+        return {
+            key: dirname,
+            config: configFilename,
+            initialize: initializeFilename,
+            update: updateFilename
+        };
+    });
 
-module.exports = function createEntry() {
     return [
         "import createClient from './client.js';",
         "const setExperiments = createClient();",
@@ -50,4 +49,6 @@ module.exports = function createEntry() {
         }).join(''),
         "setExperiments(experiments);"
     ].join('');
-};
+}
+
+module.exports = createEntry;

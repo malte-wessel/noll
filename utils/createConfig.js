@@ -2,7 +2,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
-module.exports = function createConfig() {
+module.exports = function createConfig(cwd) {
     return {
         devtool: 'eval',
         entry: [
@@ -18,18 +18,24 @@ module.exports = function createConfig() {
         module: {
             loaders: [{
                 test: /\.js$/,
-                loaders: ['babel'],
+                loader: 'babel',
                 include: [
                     path.resolve(__dirname, '../entry'),
-                    process.cwd()
+                    cwd
                 ],
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                query: {
+                    cacheDirectory: true,
+                    ignore: [
+                        path.resolve(__dirname, '../entry/client')
+                    ]
+                }
             }, {
                 test: /\.json$/,
-                loaders: ['json'],
+                loader: 'json',
                 include: [
                     path.resolve(__dirname, '../entry'),
-                    process.cwd()
+                    cwd
                 ],
                 exclude: /node_modules/
             }, {
