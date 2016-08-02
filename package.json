@@ -6,7 +6,9 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.client.config.js",
     "watch": "webpack --config webpack.client.config.js --watch",
-    "example": "cd ./example && node ../bin/noll.js"
+    "example": "cd ./example && node ../bin/noll.js",
+    "lint": "eslint client scripts utils",
+    "prepublish": "npm run lint && npm run build"
   },
   "author": "Malte Wessel",
   "license": "MIT",
