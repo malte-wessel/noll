@@ -2,3 +2,4 @@
 *.log
 client
 example
+entry/index.js

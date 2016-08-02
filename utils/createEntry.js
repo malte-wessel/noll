@@ -3,7 +3,8 @@ var path = require('path');
 var glob = require('glob');
 
 function createEntry(cwd) {
-    var experiments = glob.sync('**/config.json', { cwd: cwd }).map(function (filename) {
+    var files = glob.sync('**/config.json', { cwd: cwd, ignore: ['node_modules/**'] });
+    var experiments = files.map(function (filename) {
         var dirname = path.dirname(filename);
         var configFilename = path.join(cwd, filename);
         var config = require(configFilename);
@@ -18,9 +19,25 @@ function createEntry(cwd) {
     });
 
     return [
-        "import createClient from './client.js';",
-        "const setExperiments = createClient();",
-        "let experiments = {};",
+        "var createClient = require('./client.js');",
+        "var setExperiments = createClient();",
+        "var experiments = {};",
+        "function assign(target) {",
+        "    'use strict';",
+        "    if (target == null) throw new TypeError('Cannot convert undefined or null to object');",
+        "    target = Object(target);",
+        "    for (var index = 1; index < arguments.length; index++) {",
+        "        var source = arguments[index];",
+        "        if (source != null) {",
+        "            for (var key in source) {",
+        "                if (Object.prototype.hasOwnProperty.call(source, key)) {",
+        "                    target[key] = source[key];",
+        "                }",
+        "            }",
+        "        }",
+        "    }",
+        "    return target;",
+        "};",
         experiments.map(function (experiment) {
             return [
                 "experiments['", experiment.key, "'] = {",
@@ -31,17 +48,17 @@ function createEntry(cwd) {
                 "if (module.hot) {",
                     "module.hot.accept('", experiment.config, "', () => {",
                         "var updated = require('", experiment.config, "');",
-                        "experiments = { ...experiments, ", experiment.key, ": { ...experiments.", experiment.key, ", config: updated }};",
+                        "experiments = assign({}, experiments, {", experiment.key, ": assign({}, experiments.", experiment.key, ", { config: updated }) });",
                         "setExperiments(experiments);",
                     "});",
                     "module.hot.accept('", experiment.initialize, "', () => {",
                         "var updated = require('", experiment.initialize, "').default;",
-                        "experiments = { ...experiments, ", experiment.key, ": { ...experiments.", experiment.key, ", initialize: updated }};",
+                        "experiments = assign({}, experiments, {", experiment.key, ": assign({}, experiments.", experiment.key, ", { initialize: updated }) });",
                         "setExperiments(experiments);",
                     "});",
                     "module.hot.accept('", experiment.update, "', () => {",
                         "var updated = require('", experiment.update, "').default;",
-                        "experiments = { ...experiments, ", experiment.key, ": { ...experiments.", experiment.key, ", update: updated }};",
+                        "experiments = assign({}, experiments, {", experiment.key, ": assign({}, experiments.", experiment.key, ", { update: updated }) });",
                         "setExperiments(experiments);",
                     "});",
                 "}"
