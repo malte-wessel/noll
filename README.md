@@ -18,16 +18,15 @@ noll
 
 ## Getting started
 
-The easiest way to get started is to fork the [noll-starter](https://github.com/malte-wessel/noll-starter) repository.
+The easiest way to get started is to clone the [noll-starter](https://github.com/malte-wessel/noll-starter) repository.
 ```bash
-git fork https://github.com/malte-wessel/noll-starter.git
+git clone https://github.com/malte-wessel/noll-starter.git
 cd noll-starter
 npm install
 npm start
 ```
 
-If you want to start from zero install noll like:
+If you want to start from zero first install noll:
 ```bash
 npm install noll --save
 ```
-
