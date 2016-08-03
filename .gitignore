@@ -3,7 +3,6 @@ node_modules
 static
 .module-cache
 *.log*
-client/lib
 entry/index.js
 entry/loader.js
 entry/client.js

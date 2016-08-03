@@ -1,6 +1,6 @@
 .DS_Store
 *.log
-client
+src/client
 example
 entry/index.js
 entry/loader.js
