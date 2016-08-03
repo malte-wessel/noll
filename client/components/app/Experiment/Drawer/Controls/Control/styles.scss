@@ -1,21 +1,5 @@
 @import 'style/config.scss';
 
-.head {
-    display: flex;
-}
-
-.icon {
-    flex-grow: 0;
-}
-
-.title {
-    flex-grow: 1;
-}
-
-.head + .message {
-    margin-top: $size-sm;
-}
-
 .control {
     user-select: none;
 }

@@ -1,0 +1,14 @@
+@import 'style/config.scss';
+
+.container {
+    display: flex;
+}
+
+.icon {
+    color: orange;
+    flex-grow: 0;
+}
+
+.message {
+    flex-grow: 1;
+}

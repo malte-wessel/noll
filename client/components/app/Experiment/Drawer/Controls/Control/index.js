@@ -2,7 +2,7 @@ import cn from 'classnames';
 import keys from 'lodash/keys';
 import React, { PropTypes } from 'react';
 import validate, { isNotUndefined, isOneOf } from 'utils/validate';
-import Icon from 'components/ui/Icon';
+import Warning from 'components/ui/Warning';
 
 import controlSpecs from './controlSpecs';
 import enhance from './enhance';
@@ -25,17 +25,10 @@ const Control = props => {
     const message = validate(finalRules, control);
     if (message) {
         return (
-            <div className={className}>
-                <div className={styles.head}>
-                    <div className={styles.icon}>
-                        <Icon icon="warning" padded/>
-                    </div>
-                    <div className={styles.title}>
-                        Invalid config for control `{label || key}`
-                    </div>
-                </div>
-                <p className={styles.message}>{message}</p>
-            </div>
+            <Warning className={cn(styles.control, className)}>
+                <div>Invalid config for control `{label || key}`:</div>
+                <div>{message}</div>
+            </Warning>
         );
     }
     return (
