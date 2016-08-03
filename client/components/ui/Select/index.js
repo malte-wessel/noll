@@ -25,12 +25,15 @@ const Select = createClass({
     displayName: 'Select',
 
     propTypes: {
-        value: stringOrNumberType.isRequired,
+        value: stringOrNumberType,
         options: PropTypes.arrayOf(PropTypes.shape({
             value: stringOrNumberType.isRequired,
-            label: stringOrNumberType.isRequired
+            label: stringOrNumberType.isRequired,
+            disabled: PropTypes.bool
         })),
         onChange: PropTypes.func.isRequired,
+        disabled: PropTypes.bool,
+        placeholder: PropTypes.string,
         block: PropTypes.bool,
         className: PropTypes.string,
     },
@@ -48,33 +51,48 @@ const Select = createClass({
             value,
             options,
             onChange,
+            disabled,
+            placeholder,
             block,
             className,
             ...props
         } = this.props;
         /* eslint-enable */
 
+        const finalOptions = placeholder
+            ? [{ value: '', label: placeholder, disabled: true }].concat(options)
+            : options;
+
+        const finalValue = placeholder && !value ? '' : value;
+
         return (
             <div
                 className={cn(
                     styles.container,
                     block && styles.block,
+                    disabled && styles.disabled,
                     className
                 )}>
                 <div className={styles.inner}>
                     <Label className={styles.label}>
-                        {getLabel(options, value)}
+                        {getLabel(finalOptions, finalValue)}
                     </Label>
                     <div className={styles.arrow}>
                         <Icon icon="chevron-down"/>
                     </div>
                 </div>
                 <select
-                    value={value}
+                    value={finalValue}
                     onChange={this.handleChange}
-                    className={styles.select}>
-                    {options.map(({ value: optionValue, label }) =>
-                        <option key={optionValue} value={optionValue}>{label}</option>
+                    className={styles.select}
+                    disabled={disabled}>
+                    {finalOptions.map(({ value: optionValue, label, disabled: optionDisabled }) =>
+                        <option
+                            key={optionValue}
+                            value={optionValue}
+                            disabled={optionDisabled}>
+                            {label}
+                        </option>
                     )}
                 </select>
             </div>
