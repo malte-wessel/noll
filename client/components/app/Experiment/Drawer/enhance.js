@@ -6,13 +6,25 @@ import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
 const mapStateToProps = createSelector(
+    (state, props) => props.id,
     state => state.experimentsById,
-    (experimentsById) => ({
-        experimentOptions: map(experimentsById, (experiment, id) => ({
-            value: id,
-            label: experiment.config.title
-        }))
-    })
+    (experimentId, experimentsById) => {
+        const { initialize, update } = experimentsById[experimentId];
+        const warnings = [];
+        if (typeof initialize !== 'function') {
+            warnings.push('`initialize` was not found or is not a function');
+        }
+        if (typeof update !== 'function') {
+            warnings.push('`update` was not found or is not a function');
+        }
+        return {
+            warnings,
+            experimentOptions: map(experimentsById, (experiment, id) => ({
+                value: id,
+                label: experiment.config.title
+            }))
+        };
+    }
 );
 
 export default compose(

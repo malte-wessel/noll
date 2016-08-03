@@ -3,13 +3,14 @@ import React, { PropTypes } from 'react';
 
 import Panel from 'components/ui/Panel';
 import Select from 'components/ui/Select';
+import Warning from 'components/ui/Warning';
 
 import Controls from './Controls';
 import enhance from './enhance';
 import styles from './styles.scss';
 
 const Drawer = props => {
-    const { id, experimentOptions, router, className } = props;
+    const { id, experimentOptions, warnings, router, className } = props;
     return (
         <div className={cn(styles.container, className)}>
             <Panel className={styles.panelMain}>
@@ -18,6 +19,11 @@ const Drawer = props => {
                     options={experimentOptions}
                     value={id}
                     block/>
+                <div className={styles.warnings}>
+                    {warnings.map(warning => (
+                        <Warning className={styles.warning}>{warning}</Warning>
+                    ))}
+                </div>
             </Panel>
             <Panel
                 className={styles.panelControls}
@@ -33,6 +39,7 @@ const Drawer = props => {
 Drawer.propTypes = {
     id: PropTypes.string.isRequired,
     experimentOptions: PropTypes.array.isRequired,
+    warnings: PropTypes.array.isRequired,
     router: PropTypes.object.isRequired,
     className: PropTypes.string
 };
