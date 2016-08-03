@@ -198,8 +198,11 @@ const Slider = createClass({
 
     render() {
         const { value, className } = this.props;
-        const progessStyle = {
-            transform: `scaleX(${this.calculateRatio(value)})`
+        const scaleX = this.calculateRatio(value);
+        const progressStyle = {
+            WebkitTransform: `scaleX(${this.calculateRatio(value)})`,
+            MsTransform: `scaleX(${this.calculateRatio(value)})`,
+            transform: `scaleX(${scaleX})`
         };
         return (
             <div
@@ -211,7 +214,7 @@ const Slider = createClass({
                 tabIndex="0">
                 <div
                     className={styles.progress}
-                    style={progessStyle}/>
+                    style={progressStyle}/>
             </div>
         );
     }
