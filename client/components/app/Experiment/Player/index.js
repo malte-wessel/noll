@@ -27,8 +27,8 @@ const Player = createClass({
             PropTypes.number,
             PropTypes.string
         ]).isRequired,
-        initialize: PropTypes.func.isRequired,
-        update: PropTypes.func.isRequired,
+        initialize: PropTypes.any.isRequired,
+        update: PropTypes.any.isRequired,
         config: PropTypes.object.isRequired,
         actions: PropTypes.object.isRequired,
         className: PropTypes.string
@@ -139,6 +139,8 @@ const Player = createClass({
         const { initialize, values } = this.props;
         this.dispose();
 
+        if (typeof initialize !== 'function') return;
+
         try {
             this.data = initialize(canvas, values);
         } catch (error) {
@@ -169,13 +171,14 @@ const Player = createClass({
         const { repeat, update, actions, values } = this.props;
         const { finish, reset } = actions;
         this.rafTimer = raf(() => {
-            let result;
+            let result = false;
 
-            try {
-                result = update(canvas, this.data, values);
-            } catch (error) {
-                result = false;
-                this.setState({ error });
+            if (typeof update === 'function') {
+                try {
+                    result = update(canvas, this.data, values);
+                } catch (error) {
+                    this.setState({ error });
+                }
             }
 
             if (result === false) {

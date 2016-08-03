@@ -3,3 +3,4 @@
 client
 example
 entry/index.js
+entry/loader.js

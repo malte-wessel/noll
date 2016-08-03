@@ -27,7 +27,10 @@ module.exports = function createConfig(cwd) {
                 query: {
                     babelrc: false,
                     cacheDirectory: true,
-                    presets: ['es2015', 'stage-0'],
+                    presets: [
+                        'es2015',
+                        'stage-0'
+                    ],
                     ignore: [
                         path.resolve(__dirname, '../entry/client')
                     ]
