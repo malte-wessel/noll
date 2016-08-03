@@ -27,6 +27,7 @@ if (env === 'production') {
 module.exports = {
     devtool: devtool,
     entry: [
+        'babel-polyfill',
         './client/index'
     ],
     output: {
