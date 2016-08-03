@@ -17,6 +17,7 @@ const fpsOptions = [
 
 const Transport = props => {
     const {
+        id,
         playing,
         repeat,
         zoom,
@@ -36,6 +37,8 @@ const Transport = props => {
         ...rest
     } = props;
 
+    const disabled = !id;
+
     return (
         <Panel
             className={cn(styles.container, className)}
@@ -43,6 +46,7 @@ const Transport = props => {
             {...rest}>
             <div className={styles.left}>
                 <Select
+                    disabled={disabled}
                     onChange={setFps}
                     value={fps}
                     options={fpsOptions}/>
@@ -51,21 +55,24 @@ const Transport = props => {
                 <ButtonGroup>
                     <Button
                         icon="fast-backward"
+                        disabled={disabled}
                         onClick={reset}/>
                     <Button
                         appearance="invert"
                         icon={playing ? 'pause' : 'play'}
                         onClick={playing ? pause : play}
+                        disabled={disabled}
                         active={playing}/>
                     <Button
                         icon="step-forward"
-                        disabled={playing}
+                        disabled={playing || disabled}
                         onClick={step}/>
                 </ButtonGroup>
                 <ButtonGroup>
                     <Button
                         icon="repeat"
                         onClick={toggleRepeat}
+                        disabled={disabled}
                         active={repeat}/>
                 </ButtonGroup>
             </div>
@@ -73,16 +80,17 @@ const Transport = props => {
                 <ButtonGroup>
                     <Button
                         icon="minus"
-                        disabled={!canZoomOut}
+                        disabled={!canZoomOut || disabled}
                         onClick={zoomOut}/>
                     <Button
                         className={styles.zoomReset}
+                        disabled={disabled}
                         onClick={zoomReset}>
                         {zoom === 'auto' ? 'Auto' : `${zoom}%`}
                     </Button>
                     <Button
                         icon="plus"
-                        disabled={!canZoomIn}
+                        disabled={!canZoomIn || disabled}
                         onClick={zoomIn}/>
                 </ButtonGroup>
             </div>
@@ -91,6 +99,7 @@ const Transport = props => {
 };
 
 Transport.propTypes = {
+    id: PropTypes.string,
     playing: PropTypes.bool.isRequired,
     repeat: PropTypes.bool.isRequired,
     zoom: PropTypes.oneOfType([

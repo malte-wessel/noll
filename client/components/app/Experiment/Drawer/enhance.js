@@ -9,19 +9,20 @@ const mapStateToProps = createSelector(
     (state, props) => props.id,
     state => state.experimentsById,
     (experimentId, experimentsById) => {
-        const { initialize, update } = experimentsById[experimentId];
         const warnings = [];
-        if (typeof initialize !== 'function') {
-            warnings.push('`initialize` was not found or is not a function');
+        const experiment = experimentsById[experimentId];
+
+        if (experiment) {
+            const { initialize, update } = experiment;
+            if (typeof initialize !== 'function') warnings.push('`initialize` was not found or is not a function');
+            if (typeof update !== 'function') warnings.push('`update` was not found or is not a function');
         }
-        if (typeof update !== 'function') {
-            warnings.push('`update` was not found or is not a function');
-        }
+
         return {
             warnings,
-            experimentOptions: map(experimentsById, (experiment, id) => ({
+            experimentOptions: map(experimentsById, ({ config }, id) => ({
                 value: id,
-                label: experiment.config.title
+                label: config.title
             }))
         };
     }

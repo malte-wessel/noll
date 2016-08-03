@@ -15,6 +15,7 @@ const Drawer = props => {
         <div className={cn(styles.container, className)}>
             <Panel className={styles.panelMain}>
                 <Select
+                    placeholder="Choose experiment"
                     onChange={value => router.push(`/${value}`)}
                     options={experimentOptions}
                     value={id}
@@ -25,19 +26,21 @@ const Drawer = props => {
                     ))}
                 </div>
             </Panel>
-            <Panel
-                className={styles.panelControls}
-                title="Controls"
-                icon="sliders"
-                scrollable>
-                <Controls id={id}/>
-            </Panel>
+            {id &&
+                <Panel
+                    className={styles.panelControls}
+                    title="Controls"
+                    icon="sliders"
+                    scrollable>
+                    <Controls id={id}/>
+                </Panel>
+            }
         </div>
     );
 };
 
 Drawer.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     experimentOptions: PropTypes.array.isRequired,
     warnings: PropTypes.array.isRequired,
     router: PropTypes.object.isRequired,

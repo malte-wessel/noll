@@ -8,23 +8,21 @@ import styles from './styles.scss';
 
 const Experiment = props => {
     const { id, exists } = props;
-    if (!exists) return false;
-
     return (
         <div className={styles.container}>
             <div className={styles.main}>
                 <div className={styles.stage}>
-                    <Player key={id} id={id} className={styles.player}/>
+                    {exists && id && <Player key={id} id={id} className={styles.player}/>}
                 </div>
-                <Transport className={styles.transport}/>
+                <Transport id={exists && id ? id : undefined} className={styles.transport}/>
             </div>
-            <Drawer id={id} className={styles.drawer}/>
+            <Drawer id={exists && id ? id : undefined} className={styles.drawer}/>
         </div>
     );
 };
 
 Experiment.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     exists: PropTypes.bool.isRequired,
     className: PropTypes.string
 };
