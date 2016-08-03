@@ -7,8 +7,8 @@ noll
 
 ![Screen](https://github.com/malte-wessel/noll/raw/master/docs/screen1.gif)
 
-
 * environment for computer graphics experiments
+* easily create **prototypes** and **experiments**
 * **webpack dev server, ES6 with babel**
 * **hot module replacement**
 * implement experiments only with an `initialize` and `update` function
@@ -26,55 +26,41 @@ npm install
 npm start
 ```
 
-### Starting from zero
+## Why?
 
-If you want to start from zero first install noll:
-```bash
-npm install noll --save
-```
+**Work in progress**
 
-Then add a folder for your first experiment
-```bash
-mkdir experiment
-```
+## How it works
 
-Inside this folder you need to create a file `experiment.json` in order to tell noll that this folder contains an experiment. A minimal `experiment.json` contains only a title for the experiment:
+**Work in progress**
 
-```json
-{
-  "title": "My first experiment"
-}
-```
+## Features
 
-noll also expects two files in this folder: `initialize.js` and `update.js` which both export a single function.
+**Work in progress**
 
-#### initialize.js
-```javascript
-export default function initialize(canvas, values) {
-    // Initialize logic goes here ...
-    // You have access to
-    //   - the canvas element
-    //   - a `values` object that holds the values of your controls defined in `experiment.json`
+### Development server
 
-    // Return data and objects that you want to access in your `update` function
-    return {};
-}
-```
+**Work in progress**
 
-#### update.js
-```javascript
-export default function update(canvas, data, values) {
-    // Update and render logic goes here ...
-    // You have access to
-    //   - the canvas element
-    //   - a `data` object that holds objects and data that your `initialize` function returned
-    //   - a `values` object that holds the values of your controls defined in `experiment.json`
+* Webpack dev server
+* ES6 with babel
+* Hot module replacement
+* Support for glsl, importing shaders
 
-    // return false if you want to stop the animation loop
-    return false;
-}
+### Define controls
 
-```
+**Work in progress**
 
+* Text control
+* Number control
+* Boolean control
+* Select control
+* Color control
 
+## Starter packs
 
+**Work in progress**
+
+* [2D](https://github.com/malte-wessel/noll-starter)
+* Three.js
+* stackgl
