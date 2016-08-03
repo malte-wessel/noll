@@ -5,6 +5,9 @@ noll
 [![npm version](https://img.shields.io/npm/v/noll.svg?style=flat-square)](https://www.npmjs.com/package/noll)
 [![npm downloads](https://img.shields.io/npm/dm/noll.svg?style=flat-square)](https://www.npmjs.com/package/noll)
 
+![Screen](https://github.com/malte-wessel/noll/raw/master/docs/screen1.gif)
+
+
 * environment for computer graphics experiments
 * webpack dev server, ES6 with babel
 * hot module replacement
