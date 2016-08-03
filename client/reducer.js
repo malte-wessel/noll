@@ -13,7 +13,8 @@ const initialState = {
     canZoomOut: true,
     stageWidth: undefined,
     stageHeight: undefined,
-    fps: 60
+    fps: 60,
+    showDrawer: true
 };
 
 export default function (state = initialState, action) {
@@ -134,6 +135,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 fps: action.payload
+            };
+        }
+        case 'TOGGLE_DRAWER': {
+            return {
+                ...state,
+                showDrawer: !state.showDrawer
             };
         }
         default: {

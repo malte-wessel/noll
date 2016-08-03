@@ -19,6 +19,7 @@ const mapStateToProps = createSelector(
     state => state.stageWidth,
     state => state.stageHeight,
     state => state.fps,
+    state => state.showDrawer,
     (state, props) => {
         const experiment = getExperiment(state, props);
         return experiment && experiment.config;
@@ -31,7 +32,7 @@ const mapStateToProps = createSelector(
         const experiment = getExperiment(state, props);
         return experiment && experiment.update;
     },
-    (playing, finished, repeat, step, reset, values, zoom, stageWidth, stageHeight, fps, config, initialize, update) => {
+    (playing, finished, repeat, step, reset, values, zoom, stageWidth, stageHeight, fps, showDrawer, config, initialize, update) => {
         const { controls } = config;
         return {
             playing,
@@ -44,6 +45,7 @@ const mapStateToProps = createSelector(
             stageWidth,
             stageHeight,
             fps,
+            showDrawer,
             config,
             initialize,
             update

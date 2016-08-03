@@ -23,6 +23,7 @@ const Player = createClass({
         stageWidth: PropTypes.number,
         stageHeight: PropTypes.number,
         fps: PropTypes.number.isRequired,
+        showDrawer: PropTypes.bool.isRequired,
         zoom: PropTypes.oneOfType([
             PropTypes.number,
             PropTypes.string
@@ -60,13 +61,14 @@ const Player = createClass({
     },
 
     componentDidUpdate(propsPrev) {
-        const { playing, step, reset, initialize, zoom } = this.props;
+        const { playing, step, reset, initialize, zoom, showDrawer } = this.props;
         const {
             playing: playingPrev,
             step: stepPrev,
             reset: resetPrev,
             initialize: initializePrev,
             zoom: zoomPrev,
+            showDrawer: showDrawerPrev
         } = propsPrev;
 
         const shouldReset = initialize !== initializePrev || reset !== resetPrev;
@@ -80,6 +82,8 @@ const Player = createClass({
 
         if (step !== stepPrev) this.step(false);
         if (zoom !== zoomPrev) this.updateScrollbarPosition();
+
+        if (showDrawer !== showDrawerPrev) this.setDimensions();
     },
 
     componentWillUnmount() {
@@ -226,6 +230,7 @@ const Player = createClass({
             stageWidth,
             stageHeight,
             fps,
+            showDrawer,
             initialize,
             update,
             config,

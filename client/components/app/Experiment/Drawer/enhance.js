@@ -1,14 +1,17 @@
 import map from 'lodash/map';
+import { bindActionCreators } from 'redux';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
+import * as actions from 'actions';
 
 const mapStateToProps = createSelector(
     (state, props) => props.id,
     state => state.experimentsById,
-    (experimentId, experimentsById) => {
+    state => state.showDrawer,
+    (experimentId, experimentsById, showDrawer) => {
         const warnings = [];
         const experiment = experimentsById[experimentId];
 
@@ -23,13 +26,18 @@ const mapStateToProps = createSelector(
             experimentOptions: map(experimentsById, ({ config }, id) => ({
                 value: id,
                 label: config.title
-            }))
+            })),
+            showDrawer
         };
     }
 );
 
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
 export default compose(
     withRouter,
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     pure
 );

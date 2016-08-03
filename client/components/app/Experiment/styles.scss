@@ -21,6 +21,7 @@
 .stage {
     position: relative;
     flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .transport {
@@ -29,7 +30,7 @@
 
 .drawer {
     flex-grow: 0;
-    flex-basis: 300px;
+    flex-shrink: 0;
     background-color: $color-dark-95;
     border-left: 1px solid $color-black;
 }

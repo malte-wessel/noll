@@ -91,3 +91,9 @@ export function setFps(fps) {
         payload: parseInt(fps, 10)
     };
 }
+
+export function toggleDrawer() {
+    return {
+        type: 'TOGGLE_DRAWER'
+    };
+}

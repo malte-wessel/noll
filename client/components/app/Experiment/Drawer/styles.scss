@@ -1,12 +1,40 @@
 @import 'style/config.scss';
 
 .container {
-    display: flex;
+    position: relative;
+}
+
+.showDrawer {
+    .drawer { display: flex; }
+    .toggleDrawerFlyOut { display: none; }
+}
+
+.drawer {
+    display: none;
     flex-direction: column;
+    width: 300px;
+    height: 100%;
+}
+
+.toggleDrawerFlyOut {
+    position: absolute;
+    left: calc(#{-$input-height} - #{(2 * $size-base)});
+    margin: $size-base;
 }
 
 .panelMain {
     flex-grow: 0;
+}
+
+.panelMainSplit {
+    display: flex;
+}
+.panelMainLeft {
+    flex-grow: 1;
+}
+.panelMainRight {
+    flex-grow: 0;
+    margin-left: $size-base;
 }
 
 .panelControls {
