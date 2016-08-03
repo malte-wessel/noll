@@ -9,12 +9,12 @@ noll
 
 
 * environment for computer graphics experiments
-* webpack dev server, ES6 with babel
-* hot module replacement
+* **webpack dev server, ES6 with babel**
+* **hot module replacement**
 * implement experiments only with an `initialize` and `update` function
-* neat user interface for controlling your experiments
-* define controls for your parameters
-* support for canvas, threejs, glsl and many more
+* neat **user interface for controlling your experiments**
+* **define controls** for your parameters
+* support for **canvas**, **threejs**, **glsl** and many more
 
 ## Getting started
 
