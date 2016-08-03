@@ -26,7 +26,55 @@ npm install
 npm start
 ```
 
+### Starting from zero
+
 If you want to start from zero first install noll:
 ```bash
 npm install noll --save
 ```
+
+Then add a folder for your first experiment
+```bash
+mkdir experiment
+```
+
+Inside this folder you need to create a file `experiment.json` in order to tell noll that this folder contains an experiment. A minimal `experiment.json` contains only a title for the experiment:
+
+```json
+{
+  "title": "My first experiment"
+}
+```
+
+noll also expects two files in this folder: `initialize.js` and `update.js` which both export a single function.
+
+#### initialize.js
+```javascript
+export default function initialize(canvas, values) {
+    // Initialize logic goes here ...
+    // You have access to
+    //   - the canvas element
+    //   - a `values` object that holds the values of your controls defined in `experiment.json`
+
+    // Return data and objects that you want to access in your `update` function
+    return {};
+}
+```
+
+#### update.js
+```javascript
+export default function update(canvas, data, values) {
+    // Update and render logic goes here ...
+    // You have access to
+    //   - the canvas element
+    //   - a `data` object that holds objects and data that your `initialize` function returned
+    //   - a `values` object that holds the values of your controls defined in `experiment.json`
+
+    // return false if you want to stop the animation loop
+    return false;
+}
+
+```
+
+
+
