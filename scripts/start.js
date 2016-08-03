@@ -6,12 +6,12 @@ var fs = require('fs');
 var chokidar = require('chokidar');
 var deepEqual = require('deep-equal');
 
-var log = require('../utils/log');
-var getExperiments = require('../utils/getExperiments');
-var createConfig = require('../utils/createConfig');
-var createEntry = require('../utils/createEntry');
-var createLoader = require('../utils/createLoader');
-var openBrowser = require('../utils/openBrowser');
+var log = require('../src/utils/log');
+var getExperiments = require('../src/utils/getExperiments');
+var createConfig = require('../src/utils/createConfig');
+var createEntry = require('../src/utils/createEntry');
+var createLoader = require('../src/utils/createLoader');
+var openBrowser = require('../src/utils/openBrowser');
 
 var cwd = process.cwd();
 var experiments = getExperiments(cwd);

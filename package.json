@@ -5,7 +5,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.client.config.js",
     "watch": "webpack --config webpack.client.config.js --watch",
-    "example": "cd ./example && node ../bin/noll.js",
+    "example": "cd ./example && node ../src/bin/noll.js",
     "lint": "eslint client scripts utils",
     "prepublish": "npm run lint && npm run build"
   },
@@ -28,7 +28,7 @@
     "url": "https://github.com/malte-wessel/noll/issues"
   },
   "homepage": "https://github.com/malte-wessel/noll",
-  "bin": "./bin/noll.js",
+  "bin": "./src/bin/noll.js",
   "devDependencies": {
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-remove-console": "^6.8.0",

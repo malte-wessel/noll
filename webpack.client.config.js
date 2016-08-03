@@ -28,7 +28,7 @@ module.exports = {
     devtool: devtool,
     entry: [
         'babel-polyfill',
-        './client/index'
+        './src/client/index'
     ],
     output: {
         path: path.join(__dirname, 'entry'),
@@ -39,7 +39,7 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.scss$/,
-            include: path.join(__dirname, 'client'),
+            include: path.join(__dirname, 'src/client'),
             loader: extractTextPlugin.extract([
                 'css-loader?modules&sourceMap&importLoaders=1&localIdentName=' + localIdentName,
                 'postcss-loader',
@@ -48,14 +48,14 @@ module.exports = {
         }, {
             test: /\.js$/,
             loader: 'babel',
-            include: [path.join(__dirname, 'client')],
+            include: [path.join(__dirname, 'src/client')],
             exclude: /node_modules/
         }],
     },
     resolve: {
         extensions: ['', '.js', '.jsx'],
         root: [
-            path.join(__dirname, 'client')
+            path.join(__dirname, 'src/client')
         ]
     },
     postcss: [
@@ -63,6 +63,6 @@ module.exports = {
     ],
     plugins: plugins,
     sassLoader: {
-        includePaths: [path.resolve(__dirname, 'client')]
+        includePaths: [path.resolve(__dirname, 'src/client')]
     }
 };

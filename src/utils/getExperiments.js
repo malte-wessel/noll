@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template, no-var, prefer-arrow-callback, indent, object-shorthand, global-require, func-names, quotes */
 var path = require('path');
 var glob = require('glob');
-var exists = require('../utils/exists');
+var exists = require('./exists');
 
 function getExperiments(cwd) {
     var files = glob.sync('**/experiment.json', {

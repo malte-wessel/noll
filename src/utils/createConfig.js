@@ -8,10 +8,10 @@ module.exports = function createConfig(cwd) {
         entry: [
             'webpack-dev-server/client?http://localhost:3000',
             'webpack/hot/only-dev-server',
-            path.resolve(__dirname, '../entry/index'),
+            path.resolve(__dirname, '../../entry/index'),
         ],
         output: {
-            path: path.resolve(__dirname, '../dist'),
+            path: path.resolve(__dirname, '../../dist'),
             filename: 'bundle.js',
             publicPath: '/static/'
         },
@@ -20,7 +20,7 @@ module.exports = function createConfig(cwd) {
                 test: /\.js$/,
                 loader: 'babel',
                 include: [
-                    path.resolve(__dirname, '../entry'),
+                    path.resolve(__dirname, '../../entry'),
                     cwd
                 ],
                 exclude: /node_modules/,
@@ -32,14 +32,14 @@ module.exports = function createConfig(cwd) {
                         'stage-0'
                     ],
                     ignore: [
-                        path.resolve(__dirname, '../entry/client')
+                        path.resolve(__dirname, '../../entry/client')
                     ]
                 }
             }, {
                 test: /\.json$/,
                 loader: 'json',
                 include: [
-                    path.resolve(__dirname, '../entry'),
+                    path.resolve(__dirname, '../../entry'),
                     cwd
                 ],
                 exclude: /node_modules/

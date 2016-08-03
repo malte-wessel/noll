@@ -4,7 +4,7 @@ var spawn = require('cross-spawn');
 
 var result = spawn.sync(
     'node',
-    [require.resolve('../scripts/start')],
+    [require.resolve('../../scripts/start')],
     { stdio: 'inherit' }
 );
 process.exit(result.status);
