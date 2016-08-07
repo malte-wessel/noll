@@ -44,14 +44,14 @@ function createLoader(experiments) {
                         "if (module.hot) {",
                             "module.hot.accept('", experiment.config, "', function() {",
                                 "var updated = require('", experiment.config, "');",
-                                "experiments = assign({}, experiments, {", experiment.key, ": assign({}, experiments.", experiment.key, ", { config: updated }) });",
+                                "experiments = assign({}, experiments, {'", experiment.key, "': assign({}, experiments['", experiment.key, "'], { config: updated }) });",
                                 "setExperiments(experiments);",
                             "});",
                             experiment.initialize !== false ? [
                                 "module.hot.accept('", experiment.initialize, "', function() {",
                                     "var _updated = require('", experiment.initialize, "');",
                                     "var updated = _updated && _updated.__esModule ? _updated['default'] : _updated;",
-                                    "experiments = assign({}, experiments, {", experiment.key, ": assign({}, experiments.", experiment.key, ", { initialize: updated }) });",
+                                    "experiments = assign({}, experiments, {'", experiment.key, "': assign({}, experiments['", experiment.key, "'], { initialize: updated }) });",
                                     "setExperiments(experiments);",
                                 "});"
                             ].join('') : '',
@@ -59,7 +59,7 @@ function createLoader(experiments) {
                                 "module.hot.accept('", experiment.update, "', function() {",
                                     "var _updated = require('", experiment.update, "');",
                                     "var updated = _updated && _updated.__esModule ? _updated['default'] : _updated;",
-                                    "experiments = assign({}, experiments, {", experiment.key, ": assign({}, experiments.", experiment.key, ", { update: updated }) });",
+                                    "experiments = assign({}, experiments, {'", experiment.key, "': assign({}, experiments['", experiment.key, "'], { update: updated }) });",
                                     "setExperiments(experiments);",
                                 "});"
                             ].join('') : '',
